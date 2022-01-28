@@ -1,0 +1,98 @@
+﻿@model HNCK.CRM.Web.ViewModels.Subject.SubjectCreateViewModel
+@{
+}
+
+<div class="container">
+	<h2 class="hnck-text-blue">Create</h2>
+	<hr />
+	<form asp-controller="Home" asp-action="Create" method="post">
+		<div class="row">
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="FirstName"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="hnck-input form-control" asp-for="FirstName">
+			</div>
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="LastName"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="hnck-input form-control" asp-for="LastName">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="Email"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="form-control" asp-for="Email">
+			</div>
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="TelNumber"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="form-control" asp-for="TelNumber">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="StreetName"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="form-control" asp-for="StreetName">
+			</div>
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="StreetNumber"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="form-control" asp-for="StreetNumber">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="Zip"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="form-control" asp-for="Zip">
+			</div>
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="CityName"></label>
+			</div>
+			<div class="col-xl-4">
+				<input class="form-control" asp-for="CityName">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="CountryId"></label>
+			</div>
+			<div class="col-xl-10">
+				<select class="form-control" asp-for="CountryId" asp-items="@Model.Countries">
+					<option>-- select --</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-8"></div>
+			<div class="col-xl-2">
+				<input class="btn btn-primary btn-block" type="submit" value="Create" />
+			</div>
+			<div class="col-xl-2">
+				<a type="button" class="btn btn-primary btn-block" asp-action="Index" asp-controller="Home" method="get">Back</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+

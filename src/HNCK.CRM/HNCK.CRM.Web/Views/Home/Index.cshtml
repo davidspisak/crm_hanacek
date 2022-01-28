@@ -1,0 +1,53 @@
+﻿@model HNCK.CRM.Web.ViewModels.Subject.SubjectIndexViewModel
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+	<div class="col-md-10">
+		<h2 class="hnck-text-blue float-left">Subjects</h2>
+	</div>
+	<div class="col-md-2">
+		<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="Home">Create subject</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="text-center hnck-grid">
+			<hr />
+			<div>
+				<div id="SubjectGrid">
+					@(Html.Kendo().Grid<HNCK.CRM.Web.ViewModels.Subject.SubjectIndexViewModel>()
+						.Name("SubjectGrid")
+						.Columns(columns =>
+						{
+							columns.Bound(p => p.LastName).Title("Last name").Width(150);
+							columns.Bound(p => p.FirstName).Title("First name").Width(150);
+							columns.Bound(p => p.Email).Title("Email").Width(150);
+							columns.Bound(p => p.TelNumber).Title("Tel. number").Width(150);
+							columns.Bound(p => p.FullAddress).Title("Address").Width(400);
+							columns.Bound(p => p.IdSubject).Title(" ")
+								.Width(100)
+								.ClientTemplate("#= subjectDelete(data) #")
+								.Filterable(false);
+						})
+						.Pageable()
+						.Navigatable()
+						.Sortable()
+						.Groupable()
+						.Filterable()
+						.Scrollable(x => x.Height("Auto"))
+						.DataSource(dataSource => dataSource
+							.Ajax()
+							.PageSize(15)
+							.Model(model => model.Id(p => p.IdSubject))
+						.Read("GetSubject_Read_Sample", "Home")
+						.Create("Create", "Home")
+						)
+					)
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
