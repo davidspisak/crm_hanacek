@@ -59,7 +59,7 @@ namespace HNCK.CRM.Web
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Home}/{action=Index}/{id?}");
+					pattern: "{controller=Subject}/{action=Index}/{id?}");
 			});
 		}
 	}

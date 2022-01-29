@@ -31,6 +31,34 @@ $grid-grouping-header-color: $grid-header-color;*/
 .hnck-label {
   padding: 10px 10px 10px 10px; }
 
+.hnck-input {
+  margin-top: 10px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem; }
+
+.hnck-headerblock {
+  border-style: solid;
+  border-radius: 25px;
+  border-width: 7px 2px 2px 2px;
+  border-color: #495057;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px; }
+
+.hnck-headerblock-header {
+  border-style: solid;
+  padding: 4px;
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+  background-color: #495057;
+  border: none;
+  margin-right: -20px; }
+
+.hnck-headerblock-text {
+  padding-left: 1rem;
+  font-size: 110%;
+  font-weight: bold; }
+
 hr {
   background-color: #007bff;
   margin-top: 0;

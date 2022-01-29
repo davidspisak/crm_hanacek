@@ -1,0 +1,60 @@
+﻿@model HNCK.CRM.Web.ViewModels.Subject.SubjectDetailViewModel
+@{
+}
+
+<div class="container">
+	<h2 class="hnck-text-blue">Detail</h2>
+	<hr />
+
+	<div class="hnck-headerblock">
+		<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">Subject information</span></div>
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="FirstName"></label>
+			</div>
+			<div class="col-xl-4">
+				<div class="hnck-text-white hnck-label">@Model.FirstName</div>
+			</div>
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="LastName"></label>
+			</div>
+			<div class="col-xl-4">
+				<div class="hnck-text-white hnck-label">@Model.LastName</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="Email"></label>
+			</div>
+			<div class="col-xl-4">
+				<div class="hnck-text-white hnck-label">@Model.Email</div>
+			</div>
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="TelNumber"></label>
+			</div>
+			<div class="col-xl-4">
+				<div class="hnck-text-white hnck-label">@Model.TelNumber</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="FullAddress"></label>
+			</div>
+			<div class="col-xl-10">
+				<div class="hnck-text-white hnck-label">@Model.FullAddress</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="row">
+		<div class="col-xl-10"></div>
+		<div class="col-xl-2">
+			<a type="button" class="btn btn-primary btn-block" asp-action="Index" asp-controller="Subject" method="get">Back</a>
+		</div>
+	</div>
+</div>
