@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HNCK.CRM.Common\HNCK.CRM.Common.csproj" />
+    <ProjectReference Include="..\HNCK.CRM.InfrastructureServices\HNCK.CRM.InfrastructureServices.csproj" />
     <ProjectReference Include="..\HNCK.CRM.QueryModel\HNCK.CRM.QueryModel.csproj" />
   </ItemGroup>
 
