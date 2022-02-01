@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,21 +11,21 @@ namespace HNCK.CRM.Web.ViewModels.Subject
 	public class SubjectCreateViewModel
 	{
 		public int IdSubject { get; set; }
-		[DisplayName("First name")]
+		[DisplayName("´FirstName")]
 		public string FirstName { get; set; }
-		[DisplayName("Last name")]
+		[DisplayName("LastName")]
 		public string LastName { get; set; }
 		[DisplayName("Email")]
 		public string Email { get; set; }
-		[DisplayName("Tel. number")]
+		[DisplayName("TelNumber")]
 		public string TelNumber { get; set; }
 		[DisplayName("City")]
 		public string CityName { get; set; }
-		[DisplayName("Street number")]
+		[DisplayName("StreetNumber")]
 		public string StreetNumber { get; set; }
-		[DisplayName("Street name")]
+		[DisplayName("StreetName")]
 		public string StreetName { get; set; }
-		[DisplayName("ZIP code")]
+		[DisplayName("ZIPCode")]
 		public string Zip { get; set; }
 		[DisplayName("Country")]
 		public int CountryId { get; set; }

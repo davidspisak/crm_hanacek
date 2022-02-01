@@ -9,15 +9,15 @@ namespace HNCK.CRM.Web.ViewModels.Subject
 	public class SubjectDetailViewModel
 	{
 		public int IdSubject { get; set; }
-		[DisplayName("First name")]
+		[DisplayName("FirstName")]
 		public string FirstName { get; set; }
-		[DisplayName("Last name")]
+		[DisplayName("LastName")]
 		public string LastName { get; set; }
 		[DisplayName("Email")]
 		public string Email { get; set; }
-		[DisplayName("Tel. number")]
+		[DisplayName("TelNumber")]
 		public string TelNumber { get; set; }
-		[DisplayName("City")]
+		[DisplayName("FullAddress")]
 		public string FullAddress { get; set; }
 	}
 }

@@ -1,14 +1,11 @@
 ﻿@model HNCK.CRM.Web.ViewModels.Subject.SubjectIndexViewModel
-@{
-	ViewData["Title"] = "Home Page";
-}
 
 <div class="row">
 	<div class="col-md-10">
-		<h2 class="hnck-text-blue float-left">Subjects</h2>
+		<h2 class="hnck-text-blue float-left">@Localizer.GetString("Title")</h2>
 	</div>
 	<div class="col-md-2">
-		<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="Subject">Create subject</a>
+		<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="Subject">@Localizer.GetString("CreateButton")</a>
 	</div>
 </div>
 <div class="row">
@@ -21,11 +18,11 @@
 						.Name("SubjectGrid")
 						.Columns(columns =>
 						{
-							columns.Bound(p => p.LastName).Title("Last name").Width(150);
-							columns.Bound(p => p.FirstName).Title("First name").Width(150);
-							columns.Bound(p => p.Email).Title("Email").Width(150);
-							columns.Bound(p => p.TelNumber).Title("Tel. number").Width(150);
-							columns.Bound(p => p.FullAddress).Title("Address").Width(400);
+							columns.Bound(p => p.LastName).Title(@Localizer.GetString("LastNameColumn")).Width(150);
+							columns.Bound(p => p.FirstName).Title(@Localizer.GetString("FirstNameColumn")).Width(150);
+							columns.Bound(p => p.Email).Title(@Localizer.GetString("EmailColumn")).Width(150);
+							columns.Bound(p => p.TelNumber).Title(@Localizer.GetString("TelNumberColumn")).Width(150);
+							columns.Bound(p => p.FullAddress).Title(@Localizer.GetString("AddressColumn")).Width(400);
 							columns.Bound(p => p.IdSubject).Title(" ")
 								.Width(50)
 								.ClientTemplate("#= subjectDetail(data) #")
@@ -39,7 +36,7 @@
 								.ClientTemplate("#= subjectDelete(data) #")
 								.Filterable(false);
 						})
-						.ToolBar(tools => tools.Excel().Text("Export"))
+						.ToolBar(tools => tools.Excel().Text(@Localizer.GetString("ExportButton")))
 							.Excel(excel => excel
 								.FileName("subjects.xlsx")
 								.Filterable(true)

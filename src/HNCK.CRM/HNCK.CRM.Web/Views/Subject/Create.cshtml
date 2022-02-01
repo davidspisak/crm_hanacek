@@ -3,12 +3,12 @@
 }
 
 <div class="container">
-	<h2 class="hnck-text-blue">Create</h2>
+	<h2 class="hnck-text-blue">@Localizer.GetString("Title")</h2>
 	<hr />
 	<form asp-controller="Subject" asp-action="Create" method="post">
 
 		<div class="hnck-headerblock">
-			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">Main information</span></div>
+			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("MainSubInfoTitle")</span></div>
 			<div class="row">
 
 				<div class="col-xl-2">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="hnck-headerblock">
-			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">Address</span></div>
+			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("AddressTitle")</span></div>
 			<div class="row">
 				<div class="col-xl-2">
 					<label class="hnck-text-white hnck-label" asp-for="StreetName"></label>
@@ -93,10 +93,10 @@
 		<div class="row">
 			<div class="col-xl-8"></div>
 			<div class="col-xl-2">
-				<input class="btn btn-primary btn-block" type="submit" value="Create" />
+				<input class="btn btn-primary btn-block" type="submit" value="@Localizer.GetString("CreateButton")" />
 			</div>
 			<div class="col-xl-2">
-				<a type="button" class="btn btn-primary btn-block" asp-action="Index" asp-controller="Subject" method="get">Back</a>
+				<a type="button" class="btn btn-primary btn-block" asp-action="Index" asp-controller="Subject" method="get">@Localizer.GetString("BackButton")</a>
 			</div>
 		</div>
 	</form>

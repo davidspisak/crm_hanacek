@@ -3,11 +3,11 @@
 }
 
 <div class="container">
-	<h2 class="hnck-text-blue">Detail</h2>
+	<h2 class="hnck-text-blue">@Localizer.GetString("Title")</h2>
 	<hr />
 
 	<div class="hnck-headerblock">
-		<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">Subject information</span></div>
+		<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("MainSubInfoTitle")</span></div>
 		<div class="row">
 			<div class="col-xl-2">
 				<label class="hnck-text-white hnck-label" asp-for="FirstName"></label>
@@ -54,7 +54,7 @@
 	<div class="row">
 		<div class="col-xl-10"></div>
 		<div class="col-xl-2">
-			<a type="button" class="btn btn-primary btn-block" asp-action="Index" asp-controller="Subject" method="get">Back</a>
+			<a type="button" class="btn btn-primary btn-block" asp-action="Index" asp-controller="Subject" method="get">@Localizer.GetString("BackButton")</a>
 		</div>
 	</div>
 </div>
