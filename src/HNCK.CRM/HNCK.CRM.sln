@@ -9,11 +9,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HNCK.CRM.Model", "HNCK.CRM.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HNCK.CRM.QueryModel", "HNCK.CRM.QueryModel\HNCK.CRM.QueryModel.csproj", "{84DF0509-27E9-4E4D-80D2-2C50E0ED577F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HNCK.CRM.InfrastructureServices", "HNCK.CRM.InfrastructureServices\HNCK.CRM.InfrastructureServices.csproj", "{8FA7634E-4994-4D7A-99DE-5A1CA49CBDA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HNCK.CRM.InfrastructureServices", "HNCK.CRM.InfrastructureServices\HNCK.CRM.InfrastructureServices.csproj", "{8FA7634E-4994-4D7A-99DE-5A1CA49CBDA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HNCK.CRM.Common", "HNCK.CRM.Common\HNCK.CRM.Common.csproj", "{F3FF0900-F26A-4079-97A4-49813EFC9856}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HNCK.CRM.Common", "HNCK.CRM.Common\HNCK.CRM.Common.csproj", "{F3FF0900-F26A-4079-97A4-49813EFC9856}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HNCK.CRM.DB", "HNCK.CRM.DB\HNCK.CRM.DB.csproj", "{9335AADA-2BB0-44E7-B5E4-232D865ACA15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HNCK.CRM.DB", "HNCK.CRM.DB\HNCK.CRM.DB.csproj", "{9335AADA-2BB0-44E7-B5E4-232D865ACA15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HNCK.CRM.Repository", "HNCK.CRM.RepositoryServices\HNCK.CRM.Repository.csproj", "{2B660D99-A535-4C5C-B042-8726B2A63A47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD2AAD1B-9280-4C53-A246-32A208EC44CF}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\_docs\notes.txt = ..\..\_docs\notes.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HNCK.CRM.Dto", "HNCK.CRM.Dto\HNCK.CRM.Dto.csproj", "{68303B27-1C5C-4AD6-81D8-EC6DA1A1F63F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,9 +51,16 @@ Global
 		{F3FF0900-F26A-4079-97A4-49813EFC9856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3FF0900-F26A-4079-97A4-49813EFC9856}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9335AADA-2BB0-44E7-B5E4-232D865ACA15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9335AADA-2BB0-44E7-B5E4-232D865ACA15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9335AADA-2BB0-44E7-B5E4-232D865ACA15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9335AADA-2BB0-44E7-B5E4-232D865ACA15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B660D99-A535-4C5C-B042-8726B2A63A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B660D99-A535-4C5C-B042-8726B2A63A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B660D99-A535-4C5C-B042-8726B2A63A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B660D99-A535-4C5C-B042-8726B2A63A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68303B27-1C5C-4AD6-81D8-EC6DA1A1F63F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68303B27-1C5C-4AD6-81D8-EC6DA1A1F63F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68303B27-1C5C-4AD6-81D8-EC6DA1A1F63F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68303B27-1C5C-4AD6-81D8-EC6DA1A1F63F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

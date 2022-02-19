@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HNCK.CRM.Common\HNCK.CRM.Common.csproj" />
+    <ProjectReference Include="..\HNCK.CRM.Dto\HNCK.CRM.Dto.csproj" />
+    <ProjectReference Include="..\HNCK.CRM.Model\HNCK.CRM.Model.csproj" />
+    <ProjectReference Include="..\HNCK.CRM.QueryModel\HNCK.CRM.QueryModel.csproj" />
+  </ItemGroup>
+
+</Project>

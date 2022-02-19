@@ -1,0 +1,39 @@
+﻿@model HNCK.CRM.Web.ViewModels.Subject.SubjectDetailViewModel
+@{
+}
+
+
+<div class="hnck-headerblock">
+
+	<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("Attachments")</span></div>
+
+	<div class="demo-section k-content">
+		@(Html.Kendo().Upload()
+				.Name("files")
+				.HtmlAttributes(new { aria_label = "files" })
+				.Async(a => a
+					.Save("SaveAttachment", "Attachment", new { subjectId = Model.Subject.IdSubject })
+					.Remove("RemoveAttachment", "Attachment", new { subjectId = Model.Subject.IdSubject })
+					.AutoUpload(true)
+				).Validation(validation => validation
+					.MaxFileSize(Model.AttachmentMaxSizeInBytes)
+				)
+				.Events(events => events
+					.Error("onError")
+				)
+				.Files(files =>
+				{
+					if (Model.Attachments != null)
+					{
+						foreach (var f in Model.Attachments)
+						{
+							files.Add().Name(f.Name).Extension(f.Extension).Size((double)f.Size);
+						}
+					}
+
+
+				})
+			)
+	</div>
+
+</div>

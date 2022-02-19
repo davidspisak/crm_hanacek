@@ -1,0 +1,2 @@
+dotnet ef dbcontext scaffold "Host=localhost;Database=hnckcrm;Username=postgres;Password=bfDaoajt6343" Npgsql.EntityFrameworkCore.PostgreSQL --project HNCK.CRM.Model --force
+https://docs.oracle.com/cd/E17952_01/connector-net-en/connector-net-entityframework-core-scaffold-example.html

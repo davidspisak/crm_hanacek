@@ -1,4 +1,6 @@
-﻿using HNCK.CRM.QueryModel;
+﻿using HNCK.CRM.Model;
+using HNCK.CRM.QueryModel;
+using HNCK.CRM.Repository;
 using HNCK.CRM.Web.Models;
 using HNCK.CRM.Web.ViewModels.Subject;
 using Kendo.Mvc.Extensions;
@@ -11,143 +13,92 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using static HNCK.CRM.Common.Enums;
 
 namespace HNCK.CRM.Web.Controllers
 {
 	public class SubjectController : Controller
 	{
 		private readonly ILogger<SubjectController> _logger;
-		private List<Subjects> subjects = new List<Subjects>();
+		private readonly IRepositoryServices _repositoryServices;
 
-		public SubjectController(ILogger<SubjectController> logger)
+		public SubjectController(ILogger<SubjectController> logger , IRepositoryServices repositoryServices)
 		{
 			_logger = logger;
-			SetSampleSubjectData();
+			_repositoryServices = repositoryServices;
 		}
 
 		public IActionResult Index()
 		{
 			var vm = new SubjectIndexViewModel();
-			vm.Subjects = subjects;
 			return View(vm);
+		}
+
+		public IActionResult GetSubject_Read([DataSourceRequest] DataSourceRequest request)
+		{
+			var subjects = _repositoryServices.GetAllSubjects();
+			DataSourceResult result = subjects.AsQueryable().ToDataSourceResult(request);
+			return Json(result);
 		}
 
 
 		[HttpGet]
 		public IActionResult Create()
 		{
-			var vm = new SubjectCreateViewModel();
-			vm.Countries = new List<SelectListItem>
-			{
-				new SelectListItem {Text = "Slovak Republic", Value = "1"},
-				new SelectListItem {Text = "CzechPrepublic", Value = "2"}
-			};
+			var vm = new SubjectCreateViewModel(_repositoryServices);
 			return View(vm);
 		}
 
 		[HttpPost]
-		public IActionResult Create(SubjectCreateViewModel subject)
+		public async Task<IActionResult> Create(SubjectCreateViewModel vm)
 		{
 			if (!ModelState.IsValid)
-			{
 				return Error();
-			}
 
+			await _repositoryServices.SaveSubjectAsync(vm.Subject);
 			return View("Index");
 		}
 
+
+
 		[Route("[controller]/[action]/{id}")]
-		public IActionResult Delete(int id)
+		public async Task<IActionResult> Delete(int id)
 		{
-			return View("Index");
+			if (!ModelState.IsValid)
+				return Error();
+
+			await _repositoryServices.RemoveSubjectAsync(id);
+			return RedirectToAction("Index");
 		}
 
 		[Route("[controller]/[action]/{id}")]
-		public IActionResult Detail(int id)
+		public async Task<IActionResult> Detail(int id)
 		{
-			var sub = subjects.ElementAt(id-1);
-			var vm = new SubjectDetailViewModel()
-			{
-				FullAddress = sub.FullAddress,
-				FirstName = sub.FirstName,
-				Email = sub.Email,
-				LastName = sub.LastName,
-				TelNumber = sub.TelNumber,
-				IdSubject = sub.IdSubject
-			};
+			var vm = new SubjectDetailViewModel();
+			vm.Attachments = _repositoryServices.GetAttachmentsBySubjectId(id);
+			vm.Subject = await _repositoryServices.GetSubjectByIdAsync(id);
 			return View(vm);
 		}
 
-		public IActionResult Update(int id)
+		public async Task<IActionResult> Update(int id)
 		{
-			var sub = subjects.ElementAt(id - 1);
-			var vm = new SubjectUpdateViewModel()
-			{
-				FirstName = sub.FirstName,
-				Email = sub.Email,
-				LastName = sub.LastName,
-				TelNumber = sub.TelNumber,
-				IdSubject = sub.IdSubject
-			};
+			var vm = new SubjectUpdateViewModel();
+			vm.Subject = await _repositoryServices.GetSubjectByIdAsync(id);
+			vm.Countries = _repositoryServices.GetCountries()
+				.Select(n => new SelectListItem() { Value = n.IdCountry.ToString(), Text = n.NameENShort.ToString() })
+				.ToList();
 			return View(vm);
 		}
 
 		[HttpPost]
-		public IActionResult Update(SubjectUpdateViewModel vm)
+		public async Task<IActionResult> Update(SubjectUpdateViewModel vm)
 		{
+			if (!ModelState.IsValid)
+				return Error();
+
+			await _repositoryServices.UpdateSubjectAsync(vm.Subject);
 			return View("Index");
 		}
-
-		public IActionResult GetSubject_Read([DataSourceRequest] DataSourceRequest request)
-		{
-			var subjects = new List<Subjects>();
-			DataSourceResult result = subjects.AsQueryable().ToDataSourceResult(request);
-			return Json(result);
-		}
-
-
-		public IActionResult GetSubject_Read_Sample([DataSourceRequest] DataSourceRequest request)
-		{
-			DataSourceResult result = subjects.AsQueryable().ToDataSourceResult(request);
-			return Json(result);
-		}
-
-		private void SetSampleSubjectData()
-		{
-			subjects.Add(new Subjects() { IdSubject = 1, FirstName = "Janko", LastName = "Hraško", Email = "hrach@mail.com", TelNumber = "+421 905050550" });
-			subjects.Add(new Subjects() { IdSubject = 2, FirstName = "Ali", LastName = "Baba", Email = "alibaba@mail.com", TelNumber = "+421 955 222 111" });
-			subjects.Add(new Subjects() { IdSubject = 3, FirstName = "Peter", LastName = "Kameň", Email = "suter@mail.com", TelNumber = "+421 988 444 555" });
-			subjects.Add(new Subjects() { IdSubject = 4, FirstName = "Karol", LastName = "Smalym", Email = "malyk@mail.com", TelNumber = "+421 912 134 567" });
-			subjects.Add(new Subjects() { IdSubject = 5, FirstName = "Eugenia", LastName = "Povolna", Email = "povolna@mail.com", TelNumber = "+421 922 333 444" });
-			subjects.Add(new Subjects() { IdSubject = 6, FirstName = "Janko", LastName = "Hraško", Email = "hrach@mail.com", TelNumber = "+421 905050550" });
-			subjects.Add(new Subjects() { IdSubject = 7, FirstName = "Ali", LastName = "Baba", Email = "alibaba@mail.com", TelNumber = "+421 955 222 111" });
-			subjects.Add(new Subjects() { IdSubject = 8, FirstName = "Peter", LastName = "Kameň", Email = "suter@mail.com", TelNumber = "+421 988 444 555" });
-			subjects.Add(new Subjects() { IdSubject = 9, FirstName = "Karol", LastName = "Smalym", Email = "malyk@mail.com", TelNumber = "+421 912 134 567" });
-			subjects.Add(new Subjects() { IdSubject = 10, FirstName = "Eugenia", LastName = "Povolna", Email = "povolna@mail.com", TelNumber = "+421 922 333 444" });
-
-			subjects.Add(new Subjects() { IdSubject = 11, FirstName = "Janko", LastName = "Hraško", Email = "hrach@mail.com", TelNumber = "+421 905050550" });
-			subjects.Add(new Subjects() { IdSubject = 12, FirstName = "Ali", LastName = "Baba", Email = "alibaba@mail.com", TelNumber = "+421 955 222 111" });
-			subjects.Add(new Subjects() { IdSubject = 13, FirstName = "Peter", LastName = "Kameň", Email = "suter@mail.com", TelNumber = "+421 988 444 555" });
-			subjects.Add(new Subjects() { IdSubject = 14, FirstName = "Karol", LastName = "Smalym", Email = "malyk@mail.com", TelNumber = "+421 912 134 567" });
-			subjects.Add(new Subjects() { IdSubject = 15, FirstName = "Eugenia", LastName = "Povolna", Email = "povolna@mail.com", TelNumber = "+421 922 333 444" });
-			subjects.Add(new Subjects() { IdSubject = 16, FirstName = "Janko", LastName = "Hraško", Email = "hrach@mail.com", TelNumber = "+421 905050550" });
-			subjects.Add(new Subjects() { IdSubject = 17, FirstName = "Ali", LastName = "Baba", Email = "alibaba@mail.com", TelNumber = "+421 955 222 111" });
-			subjects.Add(new Subjects() { IdSubject = 18, FirstName = "Peter", LastName = "Kameň", Email = "suter@mail.com", TelNumber = "+421 988 444 555" });
-			subjects.Add(new Subjects() { IdSubject = 19, FirstName = "Karol", LastName = "Smalym", Email = "malyk@mail.com", TelNumber = "+421 912 134 567" });
-			subjects.Add(new Subjects() { IdSubject = 20, FirstName = "Eugenia", LastName = "Povolna", Email = "povolna@mail.com", TelNumber = "+421 922 333 444" });
-
-			subjects.Add(new Subjects() { IdSubject = 21, FirstName = "2Janko", LastName = "Hraško", Email = "hrach@mail.com", TelNumber = "+421 905050550" });
-			subjects.Add(new Subjects() { IdSubject = 22, FirstName = "2Ali", LastName = "Baba", Email = "alibaba@mail.com", TelNumber = "+421 955 222 111" });
-			subjects.Add(new Subjects() { IdSubject = 23, FirstName = "2Peter", LastName = "Kameň", Email = "suter@mail.com", TelNumber = "+421 988 444 555" });
-			subjects.Add(new Subjects() { IdSubject = 24, FirstName = "2Karol", LastName = "Smalym", Email = "malyk@mail.com", TelNumber = "+421 912 134 567" });
-			subjects.Add(new Subjects() { IdSubject = 25, FirstName = "2Eugenia", LastName = "Povolna", Email = "povolna@mail.com", TelNumber = "+421 922 333 444" });
-			subjects.Add(new Subjects() { IdSubject = 26, FirstName = "2Janko", LastName = "Hraško", Email = "hrach@mail.com", TelNumber = "+421 905050550" });
-			subjects.Add(new Subjects() { IdSubject = 27, FirstName = "2Ali", LastName = "Baba", Email = "alibaba@mail.com", TelNumber = "+421 955 222 111" });
-			subjects.Add(new Subjects() { IdSubject = 28, FirstName = "2Peter", LastName = "Kameň", Email = "suter@mail.com", TelNumber = "+421 988 444 555" });
-			subjects.Add(new Subjects() { IdSubject = 29, FirstName = "2Karol", LastName = "Smalym", Email = "malyk@mail.com", TelNumber = "+421 912 134 567" });
-			subjects.Add(new Subjects() { IdSubject = 30, FirstName = "2Eugenia", LastName = "Povolna", Email = "povolna@mail.com", TelNumber = "+421 922 333 444" });
-		}
-
 
 		public IActionResult Privacy()
 		{

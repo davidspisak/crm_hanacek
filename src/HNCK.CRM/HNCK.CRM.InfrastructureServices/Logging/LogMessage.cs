@@ -43,7 +43,7 @@ namespace HNCK.CRM.InfrastructureServices.Logging
 				LogLevelId = (int)logLevel,
 				ExceptionMessage = exception?.Message ?? string.Empty,
 				//SqlStatement = exception is PostgresException ? ((Npgsql.PostgresException)exception).InternalQuery : string.Empty,
-				CallerMethodFullName = exception?.TargetSite.DeclaringType.FullName + "." + exception?.TargetSite.Name,
+				CallerMethodFullName = exception?.TargetSite?.DeclaringType?.FullName + "." + exception?.TargetSite?.Name,
 				User = _httpContextAccessor?.HttpContext?.User?.Identity?.Name ?? string.Empty,
 				IdUser = (_httpContextAccessor?.HttpContext?.User?.Identity?.Name != null)
 					? (int?)_httpContextAccessor?.HttpContext?.Items[_httpContextAccessor?.HttpContext?.User?.Identity?.Name]
@@ -51,10 +51,10 @@ namespace HNCK.CRM.InfrastructureServices.Logging
 				Message = message ?? string.Empty,
 				ClientAgent = _httpContextAccessor?.HttpContext?.Request?.Headers["User-Agent"] ?? string.Empty,
 				ClientIp = _httpContextAccessor?.HttpContext?.Connection?.RemoteIpAddress?.ToString() ?? string.Empty,
-				RequestPath = _httpContextAccessor?.HttpContext?.Request.Path ?? string.Empty,
-				RequestMethod = _httpContextAccessor?.HttpContext?.Request.Method ?? string.Empty,
+				RequestPath = _httpContextAccessor?.HttpContext?.Request?.Path ?? string.Empty,
+				RequestMethod = _httpContextAccessor?.HttpContext?.Request?.Method ?? string.Empty,
 				RequestId = _httpContextAccessor?.HttpContext?.TraceIdentifier ?? string.Empty,
-				MachineName = System.Environment.MachineName.ToString(),
+				MachineName = System.Environment.MachineName?.ToString(),
 				ProcesId = System.Diagnostics.Process.GetCurrentProcess().Id.ToString() ?? string.Empty,
 				ThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId.ToString() ?? string.Empty
 			};

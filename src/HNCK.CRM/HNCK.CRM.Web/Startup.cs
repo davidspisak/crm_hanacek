@@ -1,6 +1,9 @@
 using HNCK.CRM.Common;
 using HNCK.CRM.InfrastructureServices.Logging.DBLogger;
 using HNCK.CRM.InfrastructureServices.Logging.FileLogger;
+using HNCK.CRM.Model;
+using HNCK.CRM.QueryModel;
+using HNCK.CRM.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,6 +43,7 @@ namespace HNCK.CRM.Web
 		{
 			services.AddLocalization(options => options.ResourcesPath = "Resources");
 			services.AddHttpContextAccessor();
+			
 			services.AddControllersWithViews()
 				.AddViewLocalization()
 				.AddDataAnnotationsLocalization();
@@ -50,7 +54,12 @@ namespace HNCK.CRM.Web
 				jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
 			})
 			.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+			services.AddDbContext<QueryContext>();
+			services.AddDbContext<HnckcrmContext>();
 			services.AddKendo();
+
+			services.AddTransient<IRepositoryServices, RepositoryServices>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

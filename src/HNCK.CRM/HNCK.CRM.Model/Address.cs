@@ -1,22 +1,24 @@
-﻿namespace HNCK.CRM.Model
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace HNCK.CRM.Model
 {
-	public class Address
-	{
-		public int IdAddress { get; set; }
-		public string CityName { get; set; }
-		public string Zip { get; set; }
-		public string Country { get; set; }
-		public string StreetName { get; set; }
-		public string StreetNumber { get; set; }
-		public bool IsValid { get; set; } = true;
-		public AddressTypeEnum AddressType { get; set; }
+    public partial class Address
+    {
+        public int IdAddress { get; set; }
+        public string CityName { get; set; }
+        public string Zip { get; set; }
+        public int? IdCountry { get; set; }
+        public string StreetName { get; set; }
+        public string StreetNumber { get; set; }
+        public DateTime? ValidTo { get; set; }
+        public int? IdSubject { get; set; }
+        public int? IdAddressType { get; set; }
 
-	}
-
-	public enum AddressTypeEnum
-	{
-		PermanentResidence,
-		Correspondence,
-		RegisteredOffice
-	}
+        public virtual AddressType IdAddressTypeNavigation { get; set; }
+        public virtual Country IdCountryNavigation { get; set; }
+        public virtual Subject IdSubjectNavigation { get; set; }
+    }
 }

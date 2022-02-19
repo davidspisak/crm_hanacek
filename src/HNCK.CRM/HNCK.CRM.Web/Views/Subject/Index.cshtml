@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="col-md-10">
-		<h2 class="hnck-text-blue float-left">@Localizer.GetString("Title")</h2>
+		<h2 id="TitleText" class="hnck-text-blue float-left">@Localizer.GetString("Title")</h2>
 	</div>
 	<div class="col-md-2">
 		<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="Subject">@Localizer.GetString("CreateButton")</a>
@@ -14,7 +14,7 @@
 			<hr />
 			<div>
 				<div id="SubjectGrid">
-					@(Html.Kendo().Grid<HNCK.CRM.QueryModel.Subjects>()
+					@(Html.Kendo().Grid<HNCK.CRM.Dto.Subject.SubjectDto>()
 						.Name("SubjectGrid")
 						.Columns(columns =>
 						{
@@ -22,19 +22,23 @@
 							columns.Bound(p => p.FirstName).Title(@Localizer.GetString("FirstNameColumn")).Width(150);
 							columns.Bound(p => p.Email).Title(@Localizer.GetString("EmailColumn")).Width(150);
 							columns.Bound(p => p.TelNumber).Title(@Localizer.GetString("TelNumberColumn")).Width(150);
-							columns.Bound(p => p.FullAddress).Title(@Localizer.GetString("AddressColumn")).Width(400);
+							//columns.Bound(p => p.FullAddress).Title(@Localizer.GetString("AddressColumn")).Width(400);
 							columns.Bound(p => p.IdSubject).Title(" ")
-								.Width(50)
+								.Width(30)
 								.ClientTemplate("#= subjectDetail(data) #")
 								.Filterable(false);
 							columns.Bound(p => p.IdSubject).Title(" ")
-								.Width(50)
+								.Width(30)
 								.ClientTemplate("#= subjectUpdate(data) #")
 								.Filterable(false);
 							columns.Bound(p => p.IdSubject).Title(" ")
-								.Width(50)
+								.Width(30)
 								.ClientTemplate("#= subjectDelete(data) #")
 								.Filterable(false);
+							//columns.Bound(p => p.IdSubject).Title(" ")
+							//	.Width(30)
+							//	.ClientTemplate("#= subjectDropDown(data) #")
+							//	.Filterable(false);
 						})
 						.ToolBar(tools => tools.Excel().Text(@Localizer.GetString("ExportButton")))
 							.Excel(excel => excel
@@ -52,12 +56,11 @@
 							.Ajax()
 							.PageSize(10)
 							.Model(model => model.Id(p => p.IdSubject))
-						.Read("GetSubject_Read_Sample", "Subject")
+						.Read("GetSubject_Read", "Subject")
 						)
 					)
 				</div>
 			</div>
 		</div>
 	</div>
-
 </div>

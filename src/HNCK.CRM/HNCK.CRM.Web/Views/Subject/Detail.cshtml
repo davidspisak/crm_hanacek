@@ -8,47 +8,99 @@
 
 	<div class="hnck-headerblock">
 		<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("MainSubInfoTitle")</span></div>
+		<input class="hnck-input form-control" id="idsubject" type="hidden" asp-for="Subject.IdSubject">
 		<div class="row">
 			<div class="col-xl-2">
-				<label class="hnck-text-white hnck-label" asp-for="FirstName"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.FirstName"></label>
 			</div>
 			<div class="col-xl-4">
-				<div class="hnck-text-white hnck-label">@Model.FirstName</div>
+				<div class="hnck-text-white hnck-label">@Model.Subject.FirstName</div>
 			</div>
 
 			<div class="col-xl-2">
-				<label class="hnck-text-white hnck-label" asp-for="LastName"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.LastName"></label>
 			</div>
 			<div class="col-xl-4">
-				<div class="hnck-text-white hnck-label">@Model.LastName</div>
+				<div class="hnck-text-white hnck-label">@Model.Subject.LastName</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-3">
+				<label class="hnck-text-white hnck-label" asp-for="Subject.PersonalIdentificationNumber"></label>
+			</div>
+			<div class="col-xl-3">
+				<div class="hnck-text-white hnck-label">@Model.Subject.PersonalIdentificationNumber</div>
+			</div>
+
+			<div class="col-xl-3">
+				<label class="hnck-text-white hnck-label" asp-for="Subject.BusinessIdentificationNumber"></label>
+			</div>
+			<div class="col-xl-3">
+				<div class="hnck-text-white hnck-label">@Model.Subject.BusinessIdentificationNumber</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xl-2">
-				<label class="hnck-text-white hnck-label" asp-for="Email"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.BirthDate"></label>
 			</div>
 			<div class="col-xl-4">
-				<div class="hnck-text-white hnck-label">@Model.Email</div>
+				@if (Model.Subject.BirthDate.HasValue)
+				{
+					<div class="hnck-text-white hnck-label">@Model.Subject.BirthDate.Value.ToString("dd.MM.yyyy")</div>
+				}
 			</div>
 
 			<div class="col-xl-2">
-				<label class="hnck-text-white hnck-label" asp-for="TelNumber"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.ResidenceCardValidTo"></label>
 			</div>
 			<div class="col-xl-4">
-				<div class="hnck-text-white hnck-label">@Model.TelNumber</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xl-2">
-				<label class="hnck-text-white hnck-label" asp-for="FullAddress"></label>
-			</div>
-			<div class="col-xl-10">
-				<div class="hnck-text-white hnck-label">@Model.FullAddress</div>
+				@if (Model.Subject.ResidenceCardValidTo.HasValue)
+				{
+					<div class="hnck-text-white hnck-label">@Model.Subject.ResidenceCardValidTo.Value.ToString("dd.MM.yyyy")</div>
+				}
 			</div>
 		</div>
 	</div>
+
+
+	<div class="hnck-headerblock">
+		<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("ContactTitle")</span></div>
+		<div class="row">
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="Subject.Email"></label>
+			</div>
+			<div class="col-xl-4">
+				<div class="hnck-text-white hnck-label">@Model.Subject.Email</div>
+			</div>
+
+			<div class="col-xl-2">
+				<label class="hnck-text-white hnck-label" asp-for="Subject.TelNumber"></label>
+			</div>
+			<div class="col-xl-4">
+				<div class="hnck-text-white hnck-label">@Model.Subject.TelNumber</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="hnck-headerblock">
+
+		<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("AddressTitle")</span></div>
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="hnck-text-white hnck-label">
+					@Model.Subject?.Address?.StreetName @Model.Subject?.Address?.StreetNumber, @Model.Subject?.Address?.Zip @Model.Subject?.Address?.CityName, @Model.Subject?.Address?.CountryNameENShort
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div>
+		@await Html.PartialAsync("~/Views/Shared/_Attachments.cshtml", Model)
+	</div>
+
 	
 
 	<div class="row">

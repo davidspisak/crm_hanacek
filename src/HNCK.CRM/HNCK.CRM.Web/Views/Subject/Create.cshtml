@@ -9,79 +9,117 @@
 
 		<div class="hnck-headerblock">
 			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("MainSubInfoTitle")</span></div>
+
 			<div class="row">
-
 				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="FirstName"></label>
+					<label class="hnck-text-white hnck-label" asp-for="Subject.FirstName"></label>
 				</div>
 				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="FirstName">
+					<input class="hnck-input form-control" asp-for="Subject.FirstName">
 				</div>
 
 				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="LastName"></label>
+					<label class="hnck-text-white hnck-label" asp-for="Subject.LastName"></label>
 				</div>
 				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="LastName">
+					<input class="hnck-input form-control" asp-for="Subject.LastName">
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="Email"></label>
+				<div class="col-xl-3">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.PersonalIdentificationNumber"></label>
 				</div>
-				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="Email">
+				<div class="col-xl-3">
+					<input class="hnck-input form-control" asp-for="Subject.PersonalIdentificationNumber">
 				</div>
 
-				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="TelNumber"></label>
+				<div class="col-xl-3">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.BusinessIdentificationNumber"></label>
 				</div>
-				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="TelNumber">
+				<div class="col-xl-3">
+					<input class="hnck-input form-control" asp-for="Subject.BusinessIdentificationNumber">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xl-3">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.BirthDate"></label>
+				</div>
+				<div class="col-xl-3">
+					<input class="hnck-input form-control" type="date" asp-for="Subject.BirthDate">
+				</div>
+
+				<div class="col-xl-3">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.ResidenceCardValidTo"></label>
+				</div>
+				<div class="col-xl-3">
+					<input class="hnck-input form-control" type="date" asp-for="Subject.ResidenceCardValidTo">
 				</div>
 			</div>
 		</div>
+
+
+		<div class="hnck-headerblock">
+			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("ContactTitle")</span></div>
+			<div class="row">
+				<div class="col-xl-2">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.Email"></label>
+				</div>
+				<div class="col-xl-4">
+					<input class="hnck-input form-control" asp-for="Subject.Email">
+				</div>
+
+				<div class="col-xl-2">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.TelNumber"></label>
+				</div>
+				<div class="col-xl-4">
+					<input class="hnck-input form-control" asp-for="Subject.TelNumber">
+				</div>
+			</div>
+		</div>
+
+
 		<div class="hnck-headerblock">
 			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("AddressTitle")</span></div>
 			<div class="row">
 				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="StreetName"></label>
+					<label class="hnck-text-white hnck-label" asp-for="Subject.Address.StreetName"></label>
 				</div>
 				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="StreetName">
+					<input class="hnck-input form-control" asp-for="Subject.Address.StreetName">
 				</div>
 
 				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="StreetNumber"></label>
+					<label class="hnck-text-white hnck-label" asp-for="Subject.Address.StreetNumber"></label>
 				</div>
 				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="StreetNumber">
+					<input class="hnck-input form-control" asp-for="Subject.Address.StreetNumber">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="Zip"></label>
+					<label class="hnck-text-white hnck-label" asp-for="Subject.Address.Zip"></label>
 				</div>
 				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="Zip">
+					<input class="hnck-input form-control" asp-for="Subject.Address.Zip">
 				</div>
 
 				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="CityName"></label>
+					<label class="hnck-text-white hnck-label" asp-for="Subject.Address.CityName"></label>
 				</div>
 				<div class="col-xl-4">
-					<input class="hnck-input form-control" asp-for="CityName">
+					<input class="hnck-input form-control" asp-for="Subject.Address.CityName">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-xl-2">
-					<label class="hnck-text-white hnck-label" asp-for="CountryId"></label>
+					<label class="hnck-text-white hnck-label" asp-for="Subject.Address.IdCountry"></label>
 				</div>
 				<div class="col-xl-10">
-					<select class="hnck-input form-control" asp-for="CountryId" asp-items="@Model.Countries">
+					<select class="hnck-input form-control" asp-for="Subject.Address.IdCountry" asp-items="@Model.Countries">
 						<option>-- select --</option>
 					</select>
 				</div>
@@ -89,6 +127,14 @@
 		</div>
 
 
+		<div class="hnck-headerblock">
+			<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("Note")</span></div>
+			<div class="row">
+				<div class="col-xl-12">
+					<textarea class="hnck-input form-control" asp-for="Subject.Note"></textarea>
+				</div>
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="col-xl-8"></div>

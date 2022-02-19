@@ -12,6 +12,12 @@ $grid-grouping-header-color: $grid-header-color;
 
 $grid-pager-number-color: $grid-header-bg;
 $grid-grouping-header-color: $grid-header-color;*/
+.k-file-name {
+  cursor: pointer; }
+
+.k-icon {
+  cursor: pointer; }
+
 .hnck-container {
   max-width: 1800px; }
 

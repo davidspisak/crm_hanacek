@@ -7,6 +7,8 @@ namespace HNCK.CRM.Common
 		public static AppSettings Instance;
 		public string ApplicationVersion { get; set; }
 		public string LogPath { get; set; }
+		public string FileStorage { get; set; }
+		public int AttachmentMaxSizeInBytes { get; set; }
 		public AppLogger AppLogger { get; set; }
 		public DbOptions DbOptions { get; set; }
 

@@ -9,6 +9,11 @@ namespace HNCK.CRM.QueryModel
 		public string LastName { get; set; }
 		public string Email { get; set; }
 		public string TelNumber { get; set; }
-		public string FullAddress { get; set; } = "Mostná 16, 955 01 Topoľčany, Slovenská republika";
+		public string PersonalIdentificationNumber { get; set; }
+		public string BusinessIdentificationNumber { get; set; }
+		public DateTime? BirthDate { get; set; }
+		public DateTime? ResidenceCardValidTo { get; set; }
+		public string Note { get; set; }
+		public DateTime? ValidTo { get; set; }
 	}
 }

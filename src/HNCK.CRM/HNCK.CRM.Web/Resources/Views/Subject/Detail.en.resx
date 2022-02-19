@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressTitle" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
   <data name="BackButton" xml:space="preserve">
     <value>Back</value>
+  </data>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Contact information</value>
   </data>
   <data name="MainSubInfoTitle" xml:space="preserve">
     <value>Main information</value>

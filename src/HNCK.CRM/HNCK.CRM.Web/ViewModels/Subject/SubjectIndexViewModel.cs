@@ -8,7 +8,7 @@ namespace HNCK.CRM.Web.ViewModels.Subject
 {
 	public class SubjectIndexViewModel
 	{
-		public List<Subjects> Subjects { get; set; }
+		public IEnumerable<Subjects> Subjects { get; set; }
 
 		public SubjectIndexViewModel()
 		{
