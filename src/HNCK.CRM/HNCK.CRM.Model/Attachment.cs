@@ -15,7 +15,6 @@ namespace HNCK.CRM.Model
         public string ContentType { get; set; }
         public int? IdSubject { get; set; }
         public DateTime? DeletedAt { get; set; }
-
         public virtual Subject IdSubjectNavigation { get; set; }
     }
 }

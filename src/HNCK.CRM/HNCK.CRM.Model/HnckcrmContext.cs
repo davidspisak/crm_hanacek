@@ -26,6 +26,7 @@ namespace HNCK.CRM.Model
         public virtual DbSet<LogLevel> LogLevels { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Trace> Traces { get; set; }
+        public virtual DbSet<UserEvent> UserEvents { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -126,7 +127,7 @@ namespace HNCK.CRM.Model
                     .HasMaxLength(127);
 
                 entity.HasOne(d => d.IdSubjectNavigation)
-                    .WithMany(p => p.Attachments)
+                    .WithMany(p => p.Attachment1s)
                     .HasForeignKey(d => d.IdSubject)
                     .HasConstraintName("FK_Attachment_Subject");
             });
@@ -286,6 +287,28 @@ namespace HNCK.CRM.Model
                     .HasConstraintName("FK_Trace_LogLevel");
             });
 
+            modelBuilder.Entity<UserEvent>(entity =>
+            {
+                entity.HasKey(e => e.IdUserEvent);
+
+                entity.ToTable("UserEvent", "evn");
+
+                entity.HasIndex(e => e.IdSubject, "IXFK_UserEvent_Subject");
+
+                entity.Property(e => e.IdUserEvent).HasDefaultValueSql("nextval(('evn.\"userevent_iduserevent_seq\"'::text)::regclass)");
+
+                entity.Property(e => e.Decsription).HasMaxLength(1023);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(255);
+
+                entity.HasOne(d => d.IdSubjectNavigation)
+                    .WithMany(p => p.UserEvents)
+                    .HasForeignKey(d => d.IdSubject)
+                    .HasConstraintName("FK_UserEvent_Subject");
+            });
+
             modelBuilder.HasSequence("address_idaddress_seq", "sub");
 
             modelBuilder.HasSequence("error_iderror_seq", "aud");
@@ -293,6 +316,8 @@ namespace HNCK.CRM.Model
             modelBuilder.HasSequence("subject_idsubject_seq", "sub");
 
             modelBuilder.HasSequence("trace_idtrace_seq", "aud");
+
+            modelBuilder.HasSequence("userevent_iduserevent_seq", "evn");
 
             OnModelCreatingPartial(modelBuilder);
         }

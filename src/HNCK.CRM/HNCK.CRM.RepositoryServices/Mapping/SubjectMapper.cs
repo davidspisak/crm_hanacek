@@ -95,7 +95,8 @@ namespace HNCK.CRM.Repository.Mapping
 				PersonalIdentificationNumber = subjectDto.PersonalIdentificationNumber,
 				ResidenceCardValidTo = subjectDto.ResidenceCardValidTo,
 				TelNumber = subjectDto.TelNumber,
-				Addresses = addresses
+				Addresses = addresses,
+				UserEvents = EventMapper.Map(subjectDto.UserEvents).ToList()
 			};
 
 			addresses.Add(new Address()

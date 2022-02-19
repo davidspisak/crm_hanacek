@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HNCK.CRM.Dto.Event;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,6 @@ namespace HNCK.CRM.Dto.Subject
 		public DateTime? ResidenceCardValidTo { get; set; }
 		public AddressDto Address { get; set; }
 		public string Note { get; set; }
+		public IEnumerable<UserEventDto>? UserEvents { get; set; }
 	}
 }

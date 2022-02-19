@@ -1,5 +1,6 @@
 ﻿using HNCK.CRM.Common;
 using HNCK.CRM.Dto;
+using HNCK.CRM.Dto.Event;
 using HNCK.CRM.Dto.Subject;
 using HNCK.CRM.Model;
 using HNCK.CRM.QueryModel;
@@ -45,7 +46,6 @@ namespace HNCK.CRM.Repository
 		public IEnumerable<Countries> GetCountries()
 			=> _qctx.Countries.AsNoTracking().Where(x => x.IsValid.Value == true);
 
-
 		public IEnumerable<AttachmentDto> GetAttachmentsBySubjectId(int subjectId)
 		{
 			var attachments = _qctx.Attachments.AsNoTracking().Where(x => !x.DeletedAt.HasValue && x.IdSubject == subjectId);
@@ -58,7 +58,7 @@ namespace HNCK.CRM.Repository
 		public async Task<SubjectDto> SaveSubjectAsync(SubjectDto subject)
 		{
 			var newSubject = SubjectMapper.Map(subject);
-			_ctx.Subjects.Add(newSubject);
+			await _ctx.Subjects.AddAsync(newSubject);
 			await _ctx.SaveChangesAsync();
 			return subject;
 		}
@@ -66,9 +66,25 @@ namespace HNCK.CRM.Repository
 		public async Task<IEnumerable<AttachmentDto>> SaveAttachmentsAsync(IEnumerable<AttachmentDto> attachments)
 		{
 			var attachmentsDB = SubjectMapper.Map(attachments);
-			_ctx.Attachments.AddRange(attachmentsDB);
+			await _ctx.Attachments.AddRangeAsync(attachmentsDB);
 			await _ctx.SaveChangesAsync();
 			return attachments;
+		}
+
+		public async Task<UserEventDto> SaveUserEventAsync(UserEventDto userEventDto)
+		{
+			var userEvnetDB = EventMapper.Map(userEventDto);
+			await _ctx.UserEvents.AddAsync(userEvnetDB);
+			await _ctx.SaveChangesAsync();
+			return userEventDto;
+		}
+
+		public async Task<IEnumerable<UserEventDto>> SaveUserEventAsync(IEnumerable<UserEventDto> userEventDto)
+		{
+			var userEvnetDB = EventMapper.Map(userEventDto);
+			await _ctx.UserEvents.AddRangeAsync(userEvnetDB);
+			await _ctx.SaveChangesAsync();
+			return userEventDto;
 		}
 
 
@@ -90,7 +106,8 @@ namespace HNCK.CRM.Repository
 
 		public async Task<Subject> RemoveSubjectAsync(int idSubject)
 		{
-			var sub = await _ctx.Subjects.FirstOrDefaultAsync(x => x.IdSubject == idSubject);
+			var sub = await _ctx.Subjects.Include(x => x.UserEvents).FirstOrDefaultAsync(x => x.IdSubject == idSubject);
+			sub.UserEvents.ToList().ForEach(x => x.DeletedDate = DateTime.Now);
 
 			if(sub == null)
 				throw new ArgumentException($"Subject with ID {idSubject} does not exists.");
@@ -101,7 +118,7 @@ namespace HNCK.CRM.Repository
 			return sub;
 		}
 
-		public async Task<AttachmentDto> DeleteAttachmentAsync(AttachmentDto attachmentDto)
+		public async Task<AttachmentDto> RemoveAttachmentAsync(AttachmentDto attachmentDto)
 		{
 			var updatedAttachment = SubjectMapper.Map(attachmentDto);
 			updatedAttachment.DeletedAt = DateTime.Now;

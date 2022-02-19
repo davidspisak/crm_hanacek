@@ -10,7 +10,8 @@ namespace HNCK.CRM.Model
         public Subject()
         {
             Addresses = new HashSet<Address>();
-            Attachments = new HashSet<Attachment>();
+            Attachment1s = new HashSet<Attachment>();
+            UserEvents = new HashSet<UserEvent>();
         }
 
         public int IdSubject { get; set; }
@@ -26,6 +27,7 @@ namespace HNCK.CRM.Model
         public DateTime? ValidTo { get; set; }
 
         public virtual ICollection<Address> Addresses { get; set; }
-        public virtual ICollection<Attachment> Attachments { get; set; }
+        public virtual ICollection<Attachment> Attachment1s { get; set; }
+        public virtual ICollection<UserEvent> UserEvents { get; set; }
     }
 }

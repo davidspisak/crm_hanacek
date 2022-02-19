@@ -9,6 +9,7 @@ namespace HNCK.CRM.Common
 		public string LogPath { get; set; }
 		public string FileStorage { get; set; }
 		public int AttachmentMaxSizeInBytes { get; set; }
+		public int NotificationDays { get; set; }
 		public AppLogger AppLogger { get; set; }
 		public DbOptions DbOptions { get; set; }
 

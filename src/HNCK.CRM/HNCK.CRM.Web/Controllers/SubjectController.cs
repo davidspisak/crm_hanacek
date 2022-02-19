@@ -1,4 +1,6 @@
-﻿using HNCK.CRM.Model;
+﻿using HNCK.CRM.Common;
+using HNCK.CRM.Dto.Event;
+using HNCK.CRM.Model;
 using HNCK.CRM.QueryModel;
 using HNCK.CRM.Repository;
 using HNCK.CRM.Web.Models;
@@ -55,7 +57,24 @@ namespace HNCK.CRM.Web.Controllers
 			if (!ModelState.IsValid)
 				return Error();
 
+
+			var userEvents = new List<UserEventDto>();
+			if (vm.CreateEventFromResidenceCardValidDate && vm.Subject.ResidenceCardValidTo.HasValue)
+			{
+				var userEventDto = new UserEventDto()
+				{
+					DueDate = (DateTime)vm.Subject.ResidenceCardValidTo,
+					Name = "Residence Card Validation Date - " + vm.Subject.LastName + " " + vm.Subject.FirstName,
+					NotificationDate = vm.Subject.ResidenceCardValidTo.Value.AddDays(0-AppSettings.Instance.NotificationDays)
+				};
+				userEvents.Add(userEventDto);
+			}
+
+			vm.Subject.UserEvents = userEvents;
 			await _repositoryServices.SaveSubjectAsync(vm.Subject);
+
+			
+
 			return View("Index");
 		}
 

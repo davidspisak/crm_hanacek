@@ -13,7 +13,7 @@ namespace HNCK.CRM.Web.ViewModels.Subject
 {
 	public class SubjectCreateViewModel : IViewModel
 	{
-
+		public bool CreateEventFromResidenceCardValidDate { get; set; }
 		public SubjectCreateViewModel()
 		{
 

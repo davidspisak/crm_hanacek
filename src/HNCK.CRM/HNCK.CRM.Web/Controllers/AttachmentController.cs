@@ -122,7 +122,7 @@ namespace HNCK.CRM.Web.Controllers
 						if (System.IO.File.Exists(path))
 						{
                             System.IO.File.Delete(path);
-                            await _repositoryServices.DeleteAttachmentAsync(attachmentForDelete);
+                            await _repositoryServices.RemoveAttachmentAsync(attachmentForDelete);
                         }
 						else
 						{

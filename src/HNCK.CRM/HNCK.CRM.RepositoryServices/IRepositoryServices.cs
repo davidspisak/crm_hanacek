@@ -1,4 +1,5 @@
 ﻿using HNCK.CRM.Dto;
+using HNCK.CRM.Dto.Event;
 using HNCK.CRM.Dto.Subject;
 using HNCK.CRM.Model;
 using HNCK.CRM.QueryModel;
@@ -21,11 +22,14 @@ namespace HNCK.CRM.Repository
 		/*COMMANDS*/
 		Task<SubjectDto> SaveSubjectAsync(SubjectDto subject);
 		Task<IEnumerable<AttachmentDto>> SaveAttachmentsAsync(IEnumerable<AttachmentDto> attachments);
+		Task<UserEventDto> SaveUserEventAsync(UserEventDto userEventDto);
+		Task<IEnumerable<UserEventDto>> SaveUserEventAsync(IEnumerable<UserEventDto> userEventDto);
+
+
 		Task<Subject> RemoveSubjectAsync(int idSubject);
 		Task<Subject> RemoveSubjectAsync(Subject subject);
 		Task<SubjectDto> UpdateSubjectAsync(SubjectDto subject);
-
-		Task<AttachmentDto> DeleteAttachmentAsync(AttachmentDto attachmentDto);
+		Task<AttachmentDto> RemoveAttachmentAsync(AttachmentDto attachmentDto);
 
 	}
 }
