@@ -10,11 +10,13 @@ namespace HNCK.CRM.QueryModel
 {
     public class QueryContext : DbContext
     {
-        public virtual DbSet<Subjects> Subjects { get; set; }
-        public virtual DbSet<Addresses> Addresses { get; set; }
-        public virtual DbSet<Countries> Countries { get; set; }
-        public virtual DbSet<Attachments> Attachments { get; set; }
 
+        public virtual DbSet<Addresses> Addresses { get; set; }
+        public virtual DbSet<Attachments> Attachments { get; set; }
+        public virtual DbSet<Countries> Countries { get; set; }
+
+        public virtual DbSet<Subjects> Subjects { get; set; }
+        public virtual DbSet<UserEvents> UserEvents { get; set; }
         public QueryContext()
         {
         }
@@ -58,7 +60,11 @@ namespace HNCK.CRM.QueryModel
                .ToView("Subjects", "sub")
                .HasNoKey();
 
-           
+            modelBuilder.Entity<UserEvents>()
+              .ToView("UserEvents", "evn")
+              .HasNoKey();
+
+
         }
     }
 }

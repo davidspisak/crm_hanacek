@@ -1,0 +1,22 @@
+﻿@model HNCK.CRM.Web.ViewModels.Subject.SubjectDetailViewModel
+@{
+}
+
+<div class="hnck-headerblock">
+
+	<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("UserEvents")</span></div>
+	<div class="row">
+		<div>
+			@foreach (var userEvent in Model.Subject.UserEvents)
+			{
+				<div class="hnck-text-white">@userEvent.DueDate.ToString("dd.MM.yyyy") - @userEvent.Name</div>
+			}
+		</div>
+	</div>
+
+	@*<div class="row">
+		<div class="col-md-2">
+			<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="UserEvent">@Localizer.GetString("CreateEvent")</a>
+		</div>
+	</div>*@
+</div>

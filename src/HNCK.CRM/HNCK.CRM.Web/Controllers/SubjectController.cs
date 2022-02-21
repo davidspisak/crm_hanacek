@@ -78,7 +78,16 @@ namespace HNCK.CRM.Web.Controllers
 			return View("Index");
 		}
 
-
+		[Route("[controller]/[action]/{id}")]
+		public async Task<IActionResult> Detail(int id)
+		{
+			var vm = new SubjectDetailViewModel();
+			vm.Attachments = _repositoryServices.GetAttachmentsBySubjectId(id);
+			vm.Subject = await _repositoryServices.GetSubjectByIdAsync(id);
+			vm.Subject.UserEvents = _repositoryServices.GetUserEvents().Where(x => x.IdSubject == (int)id);
+			vm.UserEventDto = new UserEventDto() { IdSubject = id, DueDate = DateTime.Now};
+			return View(vm);
+		}
 
 		[Route("[controller]/[action]/{id}")]
 		public async Task<IActionResult> Delete(int id)
@@ -88,15 +97,6 @@ namespace HNCK.CRM.Web.Controllers
 
 			await _repositoryServices.RemoveSubjectAsync(id);
 			return RedirectToAction("Index");
-		}
-
-		[Route("[controller]/[action]/{id}")]
-		public async Task<IActionResult> Detail(int id)
-		{
-			var vm = new SubjectDetailViewModel();
-			vm.Attachments = _repositoryServices.GetAttachmentsBySubjectId(id);
-			vm.Subject = await _repositoryServices.GetSubjectByIdAsync(id);
-			return View(vm);
 		}
 
 		public async Task<IActionResult> Update(int id)

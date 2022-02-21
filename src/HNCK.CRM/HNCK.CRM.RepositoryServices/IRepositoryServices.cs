@@ -16,7 +16,7 @@ namespace HNCK.CRM.Repository
 		IEnumerable<Addresses> GetSubjectPermanentResidences(int subjectId);
 		IEnumerable<Countries> GetCountries();
 		IEnumerable<AttachmentDto> GetAttachmentsBySubjectId(int subjectId);
-
+		IEnumerable<UserEventDto> GetUserEvents();
 
 
 		/*COMMANDS*/

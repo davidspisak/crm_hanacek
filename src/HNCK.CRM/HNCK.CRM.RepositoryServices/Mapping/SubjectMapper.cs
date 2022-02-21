@@ -89,7 +89,6 @@ namespace HNCK.CRM.Repository.Mapping
 				BusinessIdentificationNumber = subjectDto.BusinessIdentificationNumber,
 				Email = subjectDto.Email,
 				FirstName = subjectDto.FirstName,
-				IdSubject = subjectDto.IdSubject,
 				LastName = subjectDto.LastName,
 				Note = subjectDto.Note,
 				PersonalIdentificationNumber = subjectDto.PersonalIdentificationNumber,
@@ -98,6 +97,9 @@ namespace HNCK.CRM.Repository.Mapping
 				Addresses = addresses,
 				UserEvents = EventMapper.Map(subjectDto.UserEvents).ToList()
 			};
+
+			if (subjectDto.IdSubject.HasValue)
+				subject.IdSubject = (int)subjectDto.IdSubject;
 
 			addresses.Add(new Address()
 			{

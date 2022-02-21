@@ -6,30 +6,19 @@
 
 /* Drop Views */
 
-DROP VIEW IF EXISTS sub."Subjects" CASCADE
+DROP VIEW IF EXISTS sub."Addresses" CASCADE
 ;
 
 DROP VIEW IF EXISTS sub."Attachments" CASCADE
 ;
 
-/* Create Views */
-
-CREATE VIEW sub."Subjects" AS 
-SELECT 
-	"IdSubject", 
-	"FirstName", 
-	"LastName", 
-	"Email", 
-	"TelNumber", 
-	"PersonalIdentificationNumber", 
-	"BusinessIdentificationNumber", 
-	"BirthDate", 
-	"ResidenceCardValidTo", 
-	"Note",
-	"ValidTo"
-FROM 
-	sub."Subject"
+DROP VIEW IF EXISTS sub."Subjects" CASCADE
 ;
+
+DROP VIEW IF EXISTS evn."UserEvents" CASCADE
+;
+
+/* Create Views */
 
 CREATE VIEW sub."Addresses" AS 
 SELECT 
@@ -57,6 +46,20 @@ join
 	sub."Country" c on c."IdCountry" = a."IdCountry"
 ;
 
+CREATE VIEW sub."Attachments" AS 
+SELECT 
+	"IdAttachment", 
+	"Name", 
+	"Extension", 
+	"Size", 
+	"RelativePath", 
+	"ContentType", 
+	"IdSubject", 
+	"DeletedAt"
+FROM 
+	sub."Attachment";
+;
+
 CREATE VIEW sub."Countries" AS 
 SELECT 
 	"IdCountry", 
@@ -72,16 +75,45 @@ FROM
 	sub."Country"
 ;
 
-CREATE VIEW sub."Attachments" AS 
+CREATE VIEW sub."Subjects" AS 
 SELECT 
-	"IdAttachment", 
-	"Name", 
-	"Extension", 
-	"Size", 
-	"RelativePath", 
-	"ContentType", 
 	"IdSubject", 
-	"DeletedAt"
+	"FirstName", 
+	"LastName", 
+	"Email", 
+	"TelNumber", 
+	"PersonalIdentificationNumber", 
+	"BusinessIdentificationNumber", 
+	"BirthDate", 
+	"ResidenceCardValidTo", 
+	"Note",
+	"ValidTo"
 FROM 
-	sub."Attachment";
+	sub."Subject"
+;
+
+CREATE VIEW evn."UserEvents" AS 
+SELECT 
+	ue."IdUserEvent", 
+	ue."Name", 
+	ue."Decsription", 
+	ue."DueDate", 
+	ue."NotificationDate", 
+	ue."TerminationDate", 
+	ue."DeletedDate", 
+	ue."IdSubject",
+	s."LastName",
+	s."FirstName",
+	s."ValidTo",
+	s."Email",
+	s."TelNumber",
+	s."PersonalIdentificationNumber",
+	s."BusinessIdentificationNumber",
+	s."BirthDate",
+	s."ResidenceCardValidTo",
+	concat(s."LastName", ' ', s."FirstName") as "Subject_FullName"
+FROM 
+	evn."UserEvent" ue
+left join
+	sub."Subject" s on s."IdSubject" = ue."IdSubject" 
 ;

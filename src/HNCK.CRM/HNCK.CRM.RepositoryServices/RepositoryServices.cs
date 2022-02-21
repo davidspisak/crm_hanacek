@@ -34,7 +34,8 @@ namespace HNCK.CRM.Repository
 
 		public async Task<SubjectDto> GetSubjectByIdAsync(int id)
 		{
-			var sub = await _qctx.Subjects.FirstOrDefaultAsync(x => x.IdSubject == id);
+			var sub = await _qctx.Subjects
+				.FirstOrDefaultAsync(x => x.IdSubject == id);
 			var addrs = GetSubjectPermanentResidences(id).FirstOrDefault();
 			var subDto = SubjectMapper.Map(sub, addrs);
 			return subDto;
@@ -53,6 +54,13 @@ namespace HNCK.CRM.Repository
 			return attachmentDtos;
 		}
 
+		public IEnumerable<UserEventDto> GetUserEvents()
+		{
+			var events = _qctx.UserEvents.AsNoTracking();
+			var eventDtos = EventMapper.Map(events);
+			return eventDtos;
+		}
+			
 
 		/*COMMANDS*/
 		public async Task<SubjectDto> SaveSubjectAsync(SubjectDto subject)

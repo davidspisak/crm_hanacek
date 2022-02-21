@@ -1,0 +1,65 @@
+﻿<div class="row">
+	<div class="col-md-10">
+		<h2 id="TitleText" class="hnck-text-blue float-left">@Localizer.GetString("Title")</h2>
+	</div>
+	@*<div class="col-md-2">
+		<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="Subject">@Localizer.GetString("CreateButton")</a>
+	</div>*@
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="text-center hnck-grid">
+			<hr />
+			<div>
+				<div id="SubjectGrid">
+					@(Html.Kendo().Grid<HNCK.CRM.Dto.Event.UserEventDto>()
+						.Name("UserEventGrid")
+						.Columns(columns =>
+						{
+							columns.Bound(p => p.DueDate).Format("{0:dd.MM.yyyy}").Title(@Localizer.GetString("DeuDate")).Width(150);
+							columns.Bound(p => p.Name).Title(@Localizer.GetString("Name")).Width(150);
+							columns.Bound(p => p.Subject.FullName).Title(@Localizer.GetString("SubjectFullName")).Width(150);
+							columns.Bound(p => p.NotificationDate).Format("{0:dd.MM.yyyy}").Title(@Localizer.GetString("NotificationDate")).Width(150);
+							columns.Bound(p => p.Decsription).Title(@Localizer.GetString("Decsription")).Width(400);
+							//columns.Bound(p => p.FullAddress).Title(@Localizer.GetString("AddressColumn")).Width(400);
+							//columns.Bound(p => p.IdSubject).Title(" ")
+							//	.Width(30)
+							//	.ClientTemplate("#= subjectDetail(data) #")
+							//	.Filterable(false);
+							//columns.Bound(p => p.IdSubject).Title(" ")
+							//	.Width(30)
+							//	.ClientTemplate("#= subjectUpdate(data) #")
+							//	.Filterable(false);
+							//columns.Bound(p => p.IdSubject).Title(" ")
+							//	.Width(30)
+							//	.ClientTemplate("#= subjectDelete(data) #")
+							//	.Filterable(false);
+							//columns.Bound(p => p.IdSubject).Title(" ")
+							//	.Width(30)
+							//	.ClientTemplate("#= subjectDropDown(data) #")
+							//	.Filterable(false);
+						})
+						.ToolBar(tools => tools.Excel().Text(@Localizer.GetString("ExportButton")))
+							.Excel(excel => excel
+								.FileName("events.xlsx")
+								.Filterable(true)
+								.AllPages(true)
+							)
+						.Pageable()
+						.Navigatable()
+						.Sortable()
+						.Groupable()
+						.Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+						.Scrollable(x => x.Height("Auto"))
+						.DataSource(dataSource => dataSource
+							.Ajax()
+							.PageSize(10)
+							.Model(model => model.Id(p => p.IdUserEvent))
+						.Read("GetUserEvents_Read", "UserEvent")
+						)
+					)
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
