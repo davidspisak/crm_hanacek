@@ -1,7 +1,44 @@
-﻿.k-file-name{
+﻿@import "variables.scss";
+
+.k-file-name{
 	cursor: pointer;
 }
 
 .k-icon {
 	cursor: pointer;
+}
+
+.k-upload {
+	background-color: $body-bg !important;
+}
+
+.k-upload .k-dropzone {
+	background-color: $body-bg !important;
+}
+
+.k-content{
+	margin: 1rem;
+}
+
+.k-upload .k-upload-files .k-file {
+	padding: 0.25rem !important;
+}
+
+.k-file-name {
+	color: $color-white ;
+	font-size: 15px !important;
+}
+
+.k-file-size {
+	color: $color-white !important;
+}
+
+.k-upload .k-upload-button {
+	background-color: $color-blue !important;
+	border-color: $color-blue !important;
+	color: $color-white !important;
+}
+
+.k-upload .k-dropzone .k-dropzone-hint {
+	color: $color-blue !important;
 }

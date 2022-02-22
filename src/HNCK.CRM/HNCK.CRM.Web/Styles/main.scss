@@ -10,6 +10,10 @@
 	padding-bottom: 1rem;
 }
 
+.close {
+	color: $color-red;
+}
+
 .hnck-text-blue {
 	color: $color-blue;
 }
@@ -21,8 +25,31 @@
 	color: $color-white;
 }
 
+.hnck-modal {
+	background-color: $body-bg;
+	color: $color-white;
+	
+}
+
+.modal-header {
+	border-bottom: 1px solid $color-blue;
+}
+
+.modal-footer {
+	border-top: 1px solid $color-blue;
+}
+
+.modal-content {
+	border: $color-blue 1px solid;
+}
+
+.modal-title {
+	color: $color-blue;
+}
+
 .hnck-label {
 	padding: 10px 10px 10px 10px;
+	margin-left: 20px;
 }
 
 .hnck-input {

@@ -5,18 +5,36 @@
 <div class="hnck-headerblock">
 
 	<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("UserEvents")</span></div>
+
+	@foreach (var userEvent in Model.Subject.UserEvents)
+	{
+		<div class="row">
+			<div class="col-xl-2">
+				<div class="hnck-text-white hnck-label">@userEvent.DueDate.ToString("dd.MM.yyyy")</div>
+			</div>
+			<div class="col-xl-10">
+				<div class="hnck-text-white hnck-label">@userEvent.Name</div>
+			</div>
+		</div>
+	}
+
 	<div class="row">
-		<div>
-			@foreach (var userEvent in Model.Subject.UserEvents)
-			{
-				<div class="hnck-text-white">@userEvent.DueDate.ToString("dd.MM.yyyy") - @userEvent.Name</div>
-			}
+		<div class="col-xl-10"></div>
+		<div class="col-xl-2">
+			<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">@Localizer.GetString("NewEvent")</button>
 		</div>
 	</div>
 
-	@*<div class="row">
-		<div class="col-md-2">
-			<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="UserEvent">@Localizer.GetString("CreateEvent")</a>
+
+	@using (Html.BeginForm("Create", "UserEvent", FormMethod.Post))
+	{
+		<div id="exampleModal" class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content hnck-modal">
+					@await Html.PartialAsync("~/Views/UserEvent/Create.cshtml", Model.UserEventDto)
+				</div>
+			</div>
 		</div>
-	</div>*@
+	}
+
 </div>
