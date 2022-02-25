@@ -72,9 +72,6 @@ namespace HNCK.CRM.Web.Controllers
 
 			vm.Subject.UserEvents = userEvents;
 			await _repositoryServices.SaveSubjectAsync(vm.Subject);
-
-			
-
 			return View("Index");
 		}
 
@@ -84,7 +81,7 @@ namespace HNCK.CRM.Web.Controllers
 			var vm = new SubjectDetailViewModel();
 			vm.Attachments = _repositoryServices.GetAttachmentsBySubjectId(id);
 			vm.Subject = await _repositoryServices.GetSubjectByIdAsync(id);
-			vm.Subject.UserEvents = _repositoryServices.GetUserEvents().Where(x => x.IdSubject == (int)id);
+			vm.Subject.UserEvents = _repositoryServices.GetUserEvents().Where(x => x.IdSubject == (int)id).OrderBy(x => x.DueDate).ThenBy(x => x.Name);
 			vm.UserEventDto = new UserEventDto() { IdSubject = id, DueDate = DateTime.Now};
 			return View(vm);
 		}

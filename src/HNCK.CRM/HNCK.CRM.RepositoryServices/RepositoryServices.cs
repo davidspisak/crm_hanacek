@@ -60,7 +60,6 @@ namespace HNCK.CRM.Repository
 			var eventDtos = EventMapper.Map(events);
 			return eventDtos;
 		}
-			
 
 		/*COMMANDS*/
 		public async Task<SubjectDto> SaveSubjectAsync(SubjectDto subject)
@@ -105,6 +104,17 @@ namespace HNCK.CRM.Repository
 
 			return subject;
 		}
+
+		public async Task<UserEventDto> UpdateUserEventAsync(UserEventDto userEventDto)
+		{
+			var updatedUserEvnet = EventMapper.Map(userEventDto);
+
+			_ctx.UserEvents.Update(updatedUserEvnet);
+			await _ctx.SaveChangesAsync();
+
+			return userEventDto;
+		}
+
 
 		public async Task<Subject> RemoveSubjectAsync(Subject subject)
 		{

@@ -9,12 +9,39 @@
 	@foreach (var userEvent in Model.Subject.UserEvents)
 	{
 		<div class="row">
+			<div class="col-xl-1">
+				@if (userEvent.TerminationDate.HasValue)
+				{
+						<div class="hnck-label"><i class="hnck-text-green fas fa-check"></i></div>
+				}
+				@if (userEvent.DeletedDate.HasValue)
+				{
+						<div class="hnck-label"><i class="hnck-text-red">X</i></div>
+				}
+			</div>
+			
 			<div class="col-xl-2">
 				<div class="hnck-text-white hnck-label">@userEvent.DueDate.ToString("dd.MM.yyyy")</div>
 			</div>
-			<div class="col-xl-10">
+			<div class="col-xl-7">
 				<div class="hnck-text-white hnck-label">@userEvent.Name</div>
 			</div>
+
+			@if (!userEvent.TerminationDate.HasValue && !userEvent.DeletedDate.HasValue)
+				{
+				<div class="col-xl-1">
+					<a class="hnck-text-green" asp-action="DoneFromDetail" asp-controller="UserEvent" asp-route-id="@userEvent.IdUserEvent">
+						@Localizer.GetString("Done")
+					</a>
+				</div>
+				<div class="col-xl-1">
+					<a  class="hnck-text-red"  asp-action="RemoveFromDetail" asp-controller="UserEvent" asp-route-id="@userEvent.IdUserEvent">
+						@Localizer.GetString("Delete")
+					</a>
+				</div>
+				}
+
+			
 		</div>
 	}
 

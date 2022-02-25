@@ -25,10 +25,11 @@ namespace HNCK.CRM.Repository
 		Task<UserEventDto> SaveUserEventAsync(UserEventDto userEventDto);
 		Task<IEnumerable<UserEventDto>> SaveUserEventAsync(IEnumerable<UserEventDto> userEventDto);
 
+		Task<SubjectDto> UpdateSubjectAsync(SubjectDto subject);
+		Task<UserEventDto> UpdateUserEventAsync(UserEventDto userEventDto);
 
 		Task<Subject> RemoveSubjectAsync(int idSubject);
 		Task<Subject> RemoveSubjectAsync(Subject subject);
-		Task<SubjectDto> UpdateSubjectAsync(SubjectDto subject);
 		Task<AttachmentDto> RemoveAttachmentAsync(AttachmentDto attachmentDto);
 
 	}

@@ -26,29 +26,30 @@
 							//	.Width(30)
 							//	.ClientTemplate("#= subjectDetail(data) #")
 							//	.Filterable(false);
-							//columns.Bound(p => p.IdSubject).Title(" ")
-							//	.Width(30)
-							//	.ClientTemplate("#= subjectUpdate(data) #")
-							//	.Filterable(false);
-							//columns.Bound(p => p.IdSubject).Title(" ")
-							//	.Width(30)
-							//	.ClientTemplate("#= subjectDelete(data) #")
-							//	.Filterable(false);
+							columns.Bound(p => p.IdUserEvent).Title(" ")
+								.Width(30)
+								.ClientTemplate("#= eventDone(data) #")
+								.Filterable(false);
+							columns.Bound(p => p.IdUserEvent).Title(" ")
+								.Width(30)
+								.ClientTemplate("#= eventRemove(data) #")
+								.Filterable(false);
 							//columns.Bound(p => p.IdSubject).Title(" ")
 							//	.Width(30)
 							//	.ClientTemplate("#= subjectDropDown(data) #")
 							//	.Filterable(false);
 						})
-						.ToolBar(tools => tools.Excel().Text(@Localizer.GetString("ExportButton")))
-							.Excel(excel => excel
-								.FileName("events.xlsx")
-								.Filterable(true)
-								.AllPages(true)
-							)
+						//.ToolBar(tools => tools.Excel().Text(@Localizer.GetString("ExportButton")))
+						//	.Excel(excel => excel
+						//		.FileName("events.xlsx")
+						//		.Filterable(true)
+						//		.AllPages(true)
+						//	)
+						.Events(e => e.DataBound("onDataBound"))
 						.Pageable()
 						.Navigatable()
-						.Sortable()
-						.Groupable()
+						//.Sortable()
+						//.Groupable()
 						.Filterable(ftb => ftb.Mode(GridFilterMode.Row))
 						.Scrollable(x => x.Height("Auto"))
 						.DataSource(dataSource => dataSource

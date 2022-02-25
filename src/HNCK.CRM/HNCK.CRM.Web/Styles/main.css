@@ -78,6 +78,15 @@ $grid-grouping-header-color: $grid-header-color;*/
 .hnck-text-white {
   color: #ffffff; }
 
+.hnck-text-green {
+  color: #139487; }
+
+.hnck-bg-red {
+  background-color: #F05454; }
+
+.hnck-bg-yellow {
+  background-color: #F6D860; }
+
 .hnck-modal {
   background-color: #161a1d;
   color: #ffffff; }

@@ -27,9 +27,41 @@ namespace HNCK.CRM.Web.Controllers
 			return View();
 		}
 
+		public async Task<IActionResult> Done(int id)
+		{
+			var userEvent = _repositoryServices.GetUserEvents().Where(x => x.IdUserEvent == id).FirstOrDefault();
+			userEvent.TerminationDate = DateTime.Now;
+			await _repositoryServices.UpdateUserEventAsync(userEvent);
+			return RedirectToAction("Index", "UserEvent");
+		}
+
+		public async Task<IActionResult> DoneFromDetail(int id)
+		{
+			var userEvent = _repositoryServices.GetUserEvents().Where(x => x.IdUserEvent == id).FirstOrDefault();
+			userEvent.TerminationDate = DateTime.Now;
+			await _repositoryServices.UpdateUserEventAsync(userEvent);
+			return RedirectToAction("Detail", "Subject", new { id = userEvent.IdSubject });
+		}
+
+		public async Task<IActionResult> Remove(int id)
+		{
+			var userEvent =  _repositoryServices.GetUserEvents().Where(x => x.IdUserEvent == id).FirstOrDefault();
+			userEvent.DeletedDate = DateTime.Now;
+			await _repositoryServices.UpdateUserEventAsync(userEvent);
+			return RedirectToAction("Index", "UserEvent");
+		}
+
+		public async Task<IActionResult> RemoveFromDetail(int id)
+		{
+			var userEvent = _repositoryServices.GetUserEvents().Where(x => x.IdUserEvent == id).FirstOrDefault();
+			userEvent.DeletedDate = DateTime.Now;
+			await _repositoryServices.UpdateUserEventAsync(userEvent);
+			return RedirectToAction("Detail", "Subject", new { id = userEvent.IdSubject });
+		}
+
 		public IActionResult GetUserEvents_Read([DataSourceRequest] DataSourceRequest request)
 		{
-			var subjects = _repositoryServices.GetUserEvents().OrderBy(x => x.DueDate).ThenBy(x => x.Name);
+			var subjects = _repositoryServices.GetUserEvents().Where(x => !x.DeletedDate.HasValue && !x.TerminationDate.HasValue).OrderBy(x => x.DueDate).ThenBy(x => x.Name);
 			DataSourceResult result = subjects.AsQueryable().ToDataSourceResult(request);
 			return Json(result);
 		}
