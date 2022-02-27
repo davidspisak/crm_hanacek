@@ -57,10 +57,14 @@ namespace HNCK.CRM.Repository.Mapping
 		{
 			var userEvents = new List<UserEvent>();
 
-			foreach (var userEvent in userEventDtos)
+			if(userEventDtos != null)
 			{
-				userEvents.Add(Map(userEvent));
+				foreach (var userEvent in userEventDtos)
+				{
+					userEvents.Add(Map(userEvent));
+				}
 			}
+			
 			return userEvents;
 		}
 
