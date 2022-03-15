@@ -1,10 +1,12 @@
 ﻿using HNCK.CRM.Common;
 using HNCK.CRM.Dto.Event;
+using HNCK.CRM.Dto.Subject;
 using HNCK.CRM.Model;
 using HNCK.CRM.QueryModel;
 using HNCK.CRM.Repository;
 using HNCK.CRM.Web.Models;
 using HNCK.CRM.Web.ViewModels.Subject;
+using HNCK.CRM.WordProcessor;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +15,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using static HNCK.CRM.Common.Enums;
@@ -85,6 +89,71 @@ namespace HNCK.CRM.Web.Controllers
 			vm.UserEventDto = new UserEventDto() { IdSubject = id, DueDate = DateTime.Now};
 			return View(vm);
 		}
+
+		[HttpPost]
+		public async Task<IActionResult> GenerateDocuments(IEnumerable<int> ids, string template)
+		{
+			var docxTemplate = Path.Combine(Environment.CurrentDirectory, "Content", "DocxTemplates", template);
+			var files = new List<string>();
+			var subjects = _repositoryServices.GetAllSubjects().Where(x => ids.ToList().Contains((int)x.IdSubject));
+			var zipFilePath = Path.Combine(AppSettings.Instance.DownloadTmpStorage, "tmp.zip");
+
+			using (var generator = new DocxGenerator(AppSettings.Instance.DownloadTmpStorage))
+			{
+				foreach (var s in subjects)
+				{
+					var file = generator.FulFillDocxWithSubjectData(s, docxTemplate, s.LastName);
+					files.Add(file);
+				}
+			}
+
+			var zipFileMemoryStream = new MemoryStream();
+			using (ZipArchive archive = new ZipArchive(zipFileMemoryStream, ZipArchiveMode.Create, leaveOpen: true))
+			{
+				foreach (var botFilePath in files)
+				{
+					var botFileName = Path.GetFileName(botFilePath);
+					var entry = archive.CreateEntry(botFileName);
+					using (var entryStream = entry.Open())
+					using (var fileStream = System.IO.File.OpenRead(botFilePath))
+					{
+						fileStream.CopyTo(entryStream);
+					}
+				}
+			}
+
+			if (System.IO.File.Exists(zipFilePath))
+				System.IO.File.Delete(zipFilePath);
+
+			using (var fileStream = System.IO.File.Create(zipFilePath))
+			{
+				zipFileMemoryStream.Seek(0, SeekOrigin.Begin);
+				await zipFileMemoryStream.CopyToAsync(fileStream);
+			}
+			return Json(new { fileName = zipFilePath });
+		}
+
+		public async Task<IActionResult> Download(string fileName)
+		{
+			var path = fileName;
+			var memory = new MemoryStream();
+			try
+			{
+				using (var stream = new FileStream(path, FileMode.Open))
+				{
+					await stream.CopyToAsync(memory);
+				}
+			}
+			catch (Exception e)
+			{
+				ModelState.AddModelError("FileNotFoundError", e.Message);
+				return Content(e.Message);
+			}
+			memory.Position = 0;
+			return File(memory, "application/zip", "download.zip");
+		}
+
+
 
 		[Route("[controller]/[action]/{id}")]
 		public async Task<IActionResult> Delete(int id)

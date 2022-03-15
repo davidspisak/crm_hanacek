@@ -3,11 +3,8 @@ using HNCK.CRM.Dto;
 using HNCK.CRM.Dto.Subject;
 using HNCK.CRM.Model;
 using HNCK.CRM.QueryModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HNCK.CRM.Repository.Mapping
 {
@@ -39,7 +36,8 @@ namespace HNCK.CRM.Repository.Mapping
 				Note = subject.Note,
 				PersonalIdentificationNumber = subject.PersonalIdentificationNumber,
 				ResidenceCardValidTo = subject.ResidenceCardValidTo,
-				TelNumber = subject.TelNumber
+				TelNumber = subject.TelNumber,
+				FullAddress = subject.FullAddress
 			};
 
 			return subjectDto;
@@ -60,6 +58,7 @@ namespace HNCK.CRM.Repository.Mapping
 				PersonalIdentificationNumber = subject.PersonalIdentificationNumber,
 				ResidenceCardValidTo = subject.ResidenceCardValidTo,
 				TelNumber = subject.TelNumber,
+				FullAddress = subject.FullAddress,
 				Address = addr != null
 					? new AddressDto()
 					{

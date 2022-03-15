@@ -1,10 +1,31 @@
 ﻿@model HNCK.CRM.Web.ViewModels.Subject.SubjectIndexViewModel
 
 <div class="row">
-	<div class="col-md-10">
+	<div class="col-md-6">
 		<h2 id="TitleText" class="hnck-text-blue float-left">@Localizer.GetString("Title")</h2>
 	</div>
+
+
 	<div class="col-md-2">
+
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary">Action</button>
+			<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#" id="GenerateDocument_01">@Localizer.GetString("SuhlasVlastnikaNehnutelnosti")</a>
+				<a class="dropdown-item" href="#" id="GenerateDocument_02">@Localizer.GetString("CudzinciSplnomocnenie")</a>
+				<a class="dropdown-item" href="#">Something else here</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Separated link</a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-md-4">
+		@*<input type="button" class="btn btn-primary float-right" value="@Localizer.GetString("GenerateDocuments")" id="GenerateDocuments" />*@
 		<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="Subject">@Localizer.GetString("CreateButton")</a>
 	</div>
 </div>
@@ -18,6 +39,7 @@
 						.Name("SubjectGrid")
 						.Columns(columns =>
 						{
+							columns.Select().Width(50);
 							columns.Bound(p => p.LastName).Title(@Localizer.GetString("LastNameColumn")).Width(150);
 							columns.Bound(p => p.FirstName).Title(@Localizer.GetString("FirstNameColumn")).Width(150);
 							columns.Bound(p => p.Email).Title(@Localizer.GetString("EmailColumn")).Width(150);
@@ -49,6 +71,7 @@
 						.Pageable()
 						.Navigatable()
 						.Sortable()
+						.Events(ev => ev.Change("recordsCheckedonChange"))
 						.Groupable()
 						.Filterable(ftb => ftb.Mode(GridFilterMode.Row))
 						.Scrollable(x => x.Height("Auto"))

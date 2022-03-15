@@ -20,6 +20,11 @@
     <ProjectReference Include="..\HNCK.CRM.Model\HNCK.CRM.Model.csproj" />
     <ProjectReference Include="..\HNCK.CRM.QueryModel\HNCK.CRM.QueryModel.csproj" />
     <ProjectReference Include="..\HNCK.CRM.RepositoryServices\HNCK.CRM.Repository.csproj" />
+    <ProjectReference Include="..\HNCK.CRM.WordProcessor\HNCK.CRM.WordProcessor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\DocxTemplates\" />
   </ItemGroup>
 
 </Project>

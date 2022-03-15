@@ -15,5 +15,6 @@ namespace HNCK.CRM.QueryModel
 		public DateTime? ResidenceCardValidTo { get; set; }
 		public string Note { get; set; }
 		public DateTime? ValidTo { get; set; }
+		public string FullAddress { get; set; }
 	}
 }

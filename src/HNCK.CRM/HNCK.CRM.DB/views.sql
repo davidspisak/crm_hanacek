@@ -77,19 +77,26 @@ FROM
 
 CREATE VIEW sub."Subjects" AS 
 SELECT 
-	"IdSubject", 
-	"FirstName", 
-	"LastName", 
-	"Email", 
-	"TelNumber", 
-	"PersonalIdentificationNumber", 
-	"BusinessIdentificationNumber", 
-	"BirthDate", 
-	"ResidenceCardValidTo", 
-	"Note",
-	"ValidTo"
+	s."IdSubject",
+    s."FirstName",
+    s."LastName",
+    s."Email",
+    s."TelNumber",
+    s."PersonalIdentificationNumber",
+    s."BusinessIdentificationNumber",
+    s."BirthDate",
+    s."ResidenceCardValidTo",
+    s."Note",
+    s."ValidTo",
+    string_agg(concat(a."StreetName", ' ', a."StreetNumber", ', ', a."Zip", ' ',a."CityName", ', ', c."NameSK"), '; ') as "FullAddress"
 FROM 
-	sub."Subject"
+	sub."Subject" s
+left join 
+	sub."Address" a on a."IdSubject" = s."IdSubject"
+left join 
+	sub."Country" c on c."IdCountry" = a."IdCountry"
+where a."IdAddressType" = 1
+group by s."IdSubject"
 ;
 
 CREATE VIEW evn."UserEvents" AS 

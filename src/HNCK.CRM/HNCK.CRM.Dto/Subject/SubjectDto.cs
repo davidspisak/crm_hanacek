@@ -15,16 +15,12 @@ namespace HNCK.CRM.Dto.Subject
 		public string Email { get; set; }
 		public string TelNumber { get; set; }
 		public string FullName => string.Concat(LastName, " ", FirstName);
-		//public string CityName { get; set; }
-		//public string StreetNumber { get; set; }
-		//public string StreetName { get; set; }
-		//public string Zip { get; set; }
-		//public int? IdCountry { get; set; }
 		public string PersonalIdentificationNumber { get; set; }
 		public string BusinessIdentificationNumber { get; set; }
 		public DateTime? BirthDate { get; set; }
 		public DateTime? ResidenceCardValidTo { get; set; }
 		public AddressDto Address { get; set; }
+		public string FullAddress { get; set; }
 		public string Note { get; set; }
 		public IEnumerable<UserEventDto>? UserEvents { get; set; }
 	}
