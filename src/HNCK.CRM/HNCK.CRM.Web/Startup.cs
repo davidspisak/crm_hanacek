@@ -77,8 +77,8 @@ namespace HNCK.CRM.Web
 					EnableLogToFile = AppSettings.Instance.AppLogger.EnableLogToFile	
 				}, httpContextAccessor));
 
-			loggerFactory.AddProvider(new DbLoggerProvider(
-				new DbLoggerConfig()
+			loggerFactory.AddProvider(new PostgresDbLoggerProvider(
+				new PostgresDbLoggerConfig()
 				{
 					ConnectionString = AppSettings.Instance.DbOptions.ConnectionString,
 					EnableLogToDb = AppSettings.Instance.AppLogger.EnableLogToDb,
@@ -101,7 +101,7 @@ namespace HNCK.CRM.Web
 
 			app.UseAuthorization();
 
-			var supportedCultures = new[] { "en-US" };
+			var supportedCultures = new[] { "sk" };
 			var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
 				.AddSupportedCultures(supportedCultures)
 				.AddSupportedUICultures(supportedCultures);

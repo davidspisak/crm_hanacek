@@ -16,5 +16,8 @@ namespace HNCK.CRM.QueryModel
 		public string Note { get; set; }
 		public DateTime? ValidTo { get; set; }
 		public string FullAddress { get; set; }
+		public string TravelDocument { get; set; }
+		public int? IdNationality { get; set; }
+		public string Nationality { get; set; }
 	}
 }

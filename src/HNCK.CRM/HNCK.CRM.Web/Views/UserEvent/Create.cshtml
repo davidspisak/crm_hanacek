@@ -1,7 +1,7 @@
 ﻿@model HNCK.CRM.Dto.Event.UserEventDto
 
 <div class="modal-header">
-	<h5 class="modal-title">Create event</h5>
+	<h5 class="modal-title">@Localizer.GetString("Title")</h5>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
@@ -10,7 +10,7 @@
 	<input class="hnck-input form-control" type="hidden" asp-for="IdSubject">
 	<div class="row">
 		<div class="col-xl-3">
-			<label class="hnck-label hnck-text-white" asp-for="Name"></label>
+			<label class="hnck-label hnck-text-white" asp-for="Name">@Localizer.GetString("Event")</label>
 		</div>
 		<div class="col-xl-9">
 			<input class="hnck-input form-control" asp-for="Name">
@@ -18,7 +18,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xl-3">
-			<label class="hnck-label hnck-text-white" asp-for="DueDate"></label>
+			<label class="hnck-label hnck-text-white" asp-for="DueDate">@Localizer.GetString("DueDate")</label>
 		</div>
 		<div class="col-xl-9">
 			<input class="hnck-input form-control" type="date" asp-for="DueDate">
@@ -26,7 +26,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xl-3">
-			<label class="hnck-label hnck-text-white" asp-for="NotificationDate"></label>
+			<label class="hnck-label hnck-text-white" asp-for="NotificationDate">@Localizer.GetString("NotificationDate")</label>
 		</div>
 		<div class="col-xl-9">
 			<input class="hnck-input form-control" type="date" asp-for="NotificationDate">
@@ -34,7 +34,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xl-3">
-			<label class="hnck-label hnck-text-white" asp-for="Decsription"></label>
+			<label class="hnck-label hnck-text-white" asp-for="Decsription">@Localizer.GetString("Decsription")</label>
 		</div>
 		<div class="col-xl-9">
 			<textarea class="hnck-input form-control" rows="4" asp-for="Decsription"></textarea>
@@ -44,6 +44,6 @@
 
 </div>
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary">Save changes</button>
-	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	<button type="submit" class="btn btn-primary">@Localizer.GetString("SaveButton")</button>
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">@Localizer.GetString("CloseButton")</button>
 </div>

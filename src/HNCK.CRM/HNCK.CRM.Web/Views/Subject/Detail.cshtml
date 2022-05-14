@@ -11,14 +11,14 @@
 		<input class="hnck-input form-control" id="idsubject" type="hidden" asp-for="Subject.IdSubject">
 		<div class="row">
 			<div class="col-xl-3">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.FirstName"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.FirstName">@Localizer.GetString("FirstName")</label>
 			</div>
 			<div class="col-xl-3">
 				<div class="hnck-text-white hnck-label">@Model.Subject.FirstName</div>
 			</div>
 
 			<div class="col-xl-3">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.LastName"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.LastName">@Localizer.GetString("LastName")</label>
 			</div>
 			<div class="col-xl-3">
 				<div class="hnck-text-white hnck-label">@Model.Subject.LastName</div>
@@ -27,14 +27,14 @@
 
 		<div class="row">
 			<div class="col-xl-3">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.PersonalIdentificationNumber"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.PersonalIdentificationNumber">@Localizer.GetString("PersonalIdentificationNumber")</label>
 			</div>
 			<div class="col-xl-3">
 				<div class="hnck-text-white hnck-label">@Model.Subject.PersonalIdentificationNumber</div>
 			</div>
 
 			<div class="col-xl-3">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.BusinessIdentificationNumber"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.BusinessIdentificationNumber">@Localizer.GetString("BusinessIdentificationNumber")</label>
 			</div>
 			<div class="col-xl-3">
 				<div class="hnck-text-white hnck-label">@Model.Subject.BusinessIdentificationNumber</div>
@@ -43,7 +43,7 @@
 
 		<div class="row">
 			<div class="col-xl-3">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.BirthDate"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.BirthDate">@Localizer.GetString("BirthDate")</label>
 			</div>
 			<div class="col-xl-3">
 				@if (Model.Subject.BirthDate.HasValue)
@@ -53,7 +53,7 @@
 			</div>
 
 			<div class="col-xl-3">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.ResidenceCardValidTo"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.ResidenceCardValidTo">@Localizer.GetString("ResidenceCardValidTo")</label>
 			</div>
 			<div class="col-xl-3">
 				@if (Model.Subject.ResidenceCardValidTo.HasValue)
@@ -62,6 +62,23 @@
 				}
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-xl-3">
+				<label class="hnck-text-white hnck-label" asp-for="Subject.TravelDocument">@Localizer.GetString("TravelDocument")</label>
+			</div>
+			<div class="col-xl-3">
+				<div class="hnck-text-white hnck-label">@Model.Subject.TravelDocument</div>
+			</div>
+
+			<div class="col-xl-3">
+				<label class="hnck-text-white hnck-label" asp-for="Subject.Nationality">@Localizer.GetString("Nationality")</label>
+			</div>
+			<div class="col-xl-3">
+				<div class="hnck-text-white hnck-label">@Model.Subject.Nationality</div>
+			</div>
+		</div>
+
 	</div>
 
 
@@ -69,14 +86,14 @@
 		<div class="hnck-headerblock-header hnck-text-blue"><span class="hnck-headerblock-text">@Localizer.GetString("ContactTitle")</span></div>
 		<div class="row">
 			<div class="col-xl-3">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.Email"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.Email">@Localizer.GetString("Email")</label>
 			</div>
 			<div class="col-xl-3">
 				<div class="hnck-text-white hnck-label">@Model.Subject.Email</div>
 			</div>
 
 			<div class="col-xl-2">
-				<label class="hnck-text-white hnck-label" asp-for="Subject.TelNumber"></label>
+				<label class="hnck-text-white hnck-label" asp-for="Subject.TelNumber">@Localizer.GetString("TelNumber")</label>
 			</div>
 			<div class="col-xl-3">
 				<div class="hnck-text-white hnck-label">@Model.Subject.TelNumber</div>

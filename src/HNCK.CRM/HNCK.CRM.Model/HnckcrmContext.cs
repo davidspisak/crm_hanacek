@@ -83,6 +83,7 @@ namespace HNCK.CRM.Model
                     .WithMany(p => p.Addresses)
                     .HasForeignKey(d => d.IdSubject)
                     .HasConstraintName("FK_Address_Subject");
+
             });
 
             modelBuilder.Entity<AddressType>(entity =>
@@ -249,6 +250,12 @@ namespace HNCK.CRM.Model
                 entity.Property(e => e.PersonalIdentificationNumber).HasMaxLength(31);
 
                 entity.Property(e => e.TelNumber).HasMaxLength(63);
+
+                entity.HasOne(d => d.IdNationalityNavigation)
+                    .WithMany(p => p.Subjects)
+                    .HasForeignKey(d => d.IdNationality)
+                    .HasConstraintName("FK_Subject_Country");
+
             });
 
             modelBuilder.Entity<Trace>(entity =>

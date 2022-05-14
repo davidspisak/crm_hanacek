@@ -6,13 +6,14 @@ function recordsCheckedonChange(arg) {
 	recordsChecked = this.selectedKeyNames();
 }
 
-function GenerateDocuments(docxTemplate) {
+function GenerateDocuments(docxTemplate, upperCaseLastName) {
 	$.ajax({
 		type: "POST",
 		url: '/Subject/GenerateDocuments',
 		data: {
 			ids: recordsChecked,
-			template: docxTemplate
+			template: docxTemplate,
+			upperCaseLastName: upperCaseLastName
 		},
 		success: function (response) {
 			window.location = '/Subject/Download?fileName=' + response.fileName;;
@@ -27,35 +28,35 @@ function GenerateDocuments(docxTemplate) {
 }
 
 $("#GenerateDocument_01").click(function () {
-	GenerateDocuments("01_svn_cudzinci.docx");
+	GenerateDocuments("01_svn_cudzinci.docx", false);
 });
 
 $("#GenerateDocument_02").click(function () {
-	GenerateDocuments("02_spl_cudzinci.docx");
+	GenerateDocuments("02_spl_cudzinci.docx", true);
 });
 
 $("#GenerateDocument_03").click(function () {
-	GenerateDocuments("03_vyhlasenie_jedineho_spolocnika.docx");
+	GenerateDocuments("03_vyhlasenie_jedineho_spolocnika.docx", false);
 });
 
 $("#GenerateDocument_04").click(function () {
-	GenerateDocuments("04_spravca_vkladu.docx");
+	GenerateDocuments("04_spravca_vkladu.docx", false);
 });
 
 $("#GenerateDocument_05").click(function () {
-	GenerateDocuments("05_zakladatelska_listina.docx");
+	GenerateDocuments("05_zakladatelska_listina.docx", false);
 });
 
 $("#GenerateDocument_06").click(function () {
-	GenerateDocuments("06_splnomocnenie.docx");
+	GenerateDocuments("06_splnomocnenie.docx", false);
 });
 
 $("#GenerateDocument_07").click(function () {
-	GenerateDocuments("07_spl_danovi_autori.docx");
+	GenerateDocuments("07_spl_danovi_autori.docx", false);
 });
 
 $("#GenerateDocument_08").click(function () {
-	GenerateDocuments("08_vyhlasenie_do_or.docx");
+	GenerateDocuments("08_vyhlasenie_do_or.docx", false);
 });
 
 

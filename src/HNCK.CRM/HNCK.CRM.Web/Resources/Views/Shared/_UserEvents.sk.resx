@@ -117,40 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressColumn" xml:space="preserve">
-    <value>Address</value>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Dátum narodenia</value>
   </data>
-  <data name="BackButton" xml:space="preserve">
-    <value>Back</value>
+  <data name="BusinessIdentificationNumber" xml:space="preserve">
+    <value>IČO</value>
   </data>
-  <data name="CreateButton" xml:space="preserve">
-    <value>New subject</value>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Kontaktné údaje</value>
   </data>
-  <data name="CudzinciSplnomocnenie" xml:space="preserve">
-    <value>Splnomocnenie</value>
-  </data>
-  <data name="EmailColumn" xml:space="preserve">
+  <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="ExportButton" xml:space="preserve">
-    <value>Export</value>
+  <data name="FirstName" xml:space="preserve">
+    <value>Meno</value>
   </data>
-  <data name="FirstNameColumn" xml:space="preserve">
-    <value>First name</value>
-  </data>
-  <data name="LastNameColumn" xml:space="preserve">
-    <value>Last name</value>
+  <data name="LastName" xml:space="preserve">
+    <value>Priezvisko</value>
   </data>
   <data name="MainSubInfoTitle" xml:space="preserve">
-    <value>Main information</value>
+    <value>Základné údaje</value>
   </data>
-  <data name="SuhlasVlastnikaNehnutelnosti" xml:space="preserve">
-    <value>Súhlas vlastníka nehnuteľností</value>
+  <data name="Nationality" xml:space="preserve">
+    <value>Národnosť</value>
   </data>
-  <data name="TelNumberColumn" xml:space="preserve">
-    <value>Tel. number</value>
+  <data name="NewEvent" xml:space="preserve">
+    <value>Pridať udalosť</value>
+  </data>
+  <data name="PersonalIdentificationNumber" xml:space="preserve">
+    <value>Rodné číslo</value>
+  </data>
+  <data name="ResidenceCardValidTo" xml:space="preserve">
+    <value>Platnosť kartičky</value>
+  </data>
+  <data name="TelNumber" xml:space="preserve">
+    <value>Tel. číslo</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Subject</value>
+    <value>Detail klienta</value>
+  </data>
+  <data name="TravelDocument" xml:space="preserve">
+    <value>Číslo pasu</value>
+  </data>
+  <data name="UserEvents" xml:space="preserve">
+    <value>Udalosti klienta</value>
   </data>
 </root>

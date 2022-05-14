@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace HNCK.CRM.InfrastructureServices.Logging.DBLogger
 {
-	[ProviderAlias("DbLogger")]
-	public class DbLoggerProvider : ILoggerProvider
+	[ProviderAlias("PostgresDbLogger")]
+	public class PostgresDbLoggerProvider : ILoggerProvider
 	{
-		private readonly DbLoggerConfig _config;
+		private readonly PostgresDbLoggerConfig _config;
 		private readonly IHttpContextAccessor _httpContextAccessor;
 
-		public DbLoggerProvider(DbLoggerConfig config, IHttpContextAccessor httpContextAccessor)
+		public PostgresDbLoggerProvider(PostgresDbLoggerConfig config, IHttpContextAccessor httpContextAccessor)
 		{
 			_config = config;
 			_httpContextAccessor = httpContextAccessor;
@@ -23,12 +23,12 @@ namespace HNCK.CRM.InfrastructureServices.Logging.DBLogger
 		public ILogger CreateLogger(string categoryName)
 		{
 			if (_config == null)
-				throw new NullReferenceException($"{nameof(DbLoggerConfig)}");
+				throw new NullReferenceException($"{nameof(PostgresDbLoggerConfig)}");
 
 			if (_httpContextAccessor == null)
 				throw new NullReferenceException($"{nameof(IHttpContextAccessor)}");
 
-			return new DbLogger(categoryName, _config, _httpContextAccessor);
+			return new PostgresDbLogger(categoryName, _config, _httpContextAccessor);
 		}
 
 		public void Dispose()

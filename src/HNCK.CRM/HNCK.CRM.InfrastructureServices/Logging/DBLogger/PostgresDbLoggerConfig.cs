@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HNCK.CRM.InfrastructureServices.Logging.DBLogger
 {
-	public class DbLoggerConfig
+	public class PostgresDbLoggerConfig
 	{
 		public string ConnectionString { get; set; }
 		public bool EnableLogToDb { get; set; }

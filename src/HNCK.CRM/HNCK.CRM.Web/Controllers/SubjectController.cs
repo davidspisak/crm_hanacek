@@ -58,9 +58,20 @@ namespace HNCK.CRM.Web.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create(SubjectCreateViewModel vm)
 		{
-			if (!ModelState.IsValid)
-				return Error();
+			if (vm.Subject.IdNationality == null)
+			{
+				vm.Subject.IdNationality = 261;
+			}
 
+			if (vm.Subject?.Address == null)
+			{
+				vm.Subject.Address = new AddressDto();
+			}
+
+			if (vm.Subject?.Address?.IdAddress == null)
+			{
+				vm.Subject.Address.IdAddress = 261;
+			}
 
 			var userEvents = new List<UserEventDto>();
 			if (vm.CreateEventFromResidenceCardValidDate && vm.Subject.ResidenceCardValidTo.HasValue)
@@ -91,7 +102,7 @@ namespace HNCK.CRM.Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> GenerateDocuments(IEnumerable<int> ids, string template)
+		public async Task<IActionResult> GenerateDocuments(IEnumerable<int> ids, string template, bool upperCaseLastName = false)
 		{
 			var docxTemplate = Path.Combine(Environment.CurrentDirectory, "Content", "DocxTemplates", template);
 			var files = new List<string>();
@@ -102,6 +113,9 @@ namespace HNCK.CRM.Web.Controllers
 			{
 				foreach (var s in subjects)
 				{
+					if (upperCaseLastName)
+						s.LastName = s.LastName.ToUpper();
+
 					var file = generator.FulFillDocxWithSubjectData(s, docxTemplate, s.LastName);
 					files.Add(file);
 				}
@@ -178,8 +192,15 @@ namespace HNCK.CRM.Web.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Update(SubjectUpdateViewModel vm)
 		{
-			if (!ModelState.IsValid)
-				return Error();
+			if (vm.Subject.IdNationality == null)
+			{
+				vm.Subject.IdNationality = 261;
+			}
+
+			if (vm.Subject?.Address?.IdAddress == null)
+			{
+				vm.Subject.Address.IdAddress = 261;
+			}
 
 			await _repositoryServices.UpdateSubjectAsync(vm.Subject);
 			return View("Index");

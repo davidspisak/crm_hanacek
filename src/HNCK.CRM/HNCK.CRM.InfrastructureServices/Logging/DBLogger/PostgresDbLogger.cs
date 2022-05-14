@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace HNCK.CRM.InfrastructureServices.Logging.DBLogger
 {
-	public class DbLogger : Logger
+	public class PostgresDbLogger : Logger
 	{
-		private readonly DbLoggerConfig _config;
+		private readonly PostgresDbLoggerConfig _config;
 
-		public DbLogger(string name, DbLoggerConfig config, IHttpContextAccessor httpContextAccessor) : base(name, httpContextAccessor)
+		public PostgresDbLogger(string name, PostgresDbLoggerConfig config, IHttpContextAccessor httpContextAccessor) : base(name, httpContextAccessor)
 		{
 			_config = config;
 		}

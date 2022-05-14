@@ -54,7 +54,7 @@
 						.Scrollable(x => x.Height("Auto"))
 						.DataSource(dataSource => dataSource
 							.Ajax()
-							.PageSize(10)
+							.PageSize(20)
 							.Model(model => model.Id(p => p.IdUserEvent))
 						.Read("GetUserEvents_Read", "UserEvent")
 						)

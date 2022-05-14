@@ -117,40 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressColumn" xml:space="preserve">
-    <value>Address</value>
+  <data name="AddressTitle" xml:space="preserve">
+    <value>Adresa</value>
   </data>
   <data name="BackButton" xml:space="preserve">
-    <value>Back</value>
+    <value>Späť</value>
   </data>
-  <data name="CreateButton" xml:space="preserve">
-    <value>New subject</value>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Dátum narodenia</value>
   </data>
-  <data name="CudzinciSplnomocnenie" xml:space="preserve">
-    <value>Splnomocnenie</value>
+  <data name="BusinessIdentificationNumber" xml:space="preserve">
+    <value>IČO</value>
   </data>
-  <data name="EmailColumn" xml:space="preserve">
+  <data name="CityName" xml:space="preserve">
+    <value>Obec</value>
+  </data>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Kontaktné údaje</value>
+  </data>
+  <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="ExportButton" xml:space="preserve">
-    <value>Export</value>
+  <data name="FirstName" xml:space="preserve">
+    <value>Meno</value>
   </data>
-  <data name="FirstNameColumn" xml:space="preserve">
-    <value>First name</value>
+  <data name="IdCountry" xml:space="preserve">
+    <value>Štát</value>
   </data>
-  <data name="LastNameColumn" xml:space="preserve">
-    <value>Last name</value>
+  <data name="IdNationality" xml:space="preserve">
+    <value>Národnosť</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Priezvisko</value>
   </data>
   <data name="MainSubInfoTitle" xml:space="preserve">
-    <value>Main information</value>
+    <value>Základné údaje</value>
   </data>
-  <data name="SuhlasVlastnikaNehnutelnosti" xml:space="preserve">
-    <value>Súhlas vlastníka nehnuteľností</value>
+  <data name="Note" xml:space="preserve">
+    <value>Poznámka</value>
   </data>
-  <data name="TelNumberColumn" xml:space="preserve">
-    <value>Tel. number</value>
+  <data name="PersonalIdentificationNumber" xml:space="preserve">
+    <value>Rodné číslo</value>
+  </data>
+  <data name="ResidenceCardValidTo" xml:space="preserve">
+    <value>Platnosť kartičky</value>
+  </data>
+  <data name="StreetName" xml:space="preserve">
+    <value>Ulica</value>
+  </data>
+  <data name="StreetNumber" xml:space="preserve">
+    <value>Súpisné číslo</value>
+  </data>
+  <data name="TelNumber" xml:space="preserve">
+    <value>Tel. číslo</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Subject</value>
+    <value>Zmena klienta</value>
+  </data>
+  <data name="TravelDocument" xml:space="preserve">
+    <value>Číslo pasu</value>
+  </data>
+  <data name="UpdateButton" xml:space="preserve">
+    <value>Uložiť</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+    <value>PSČ</value>
   </data>
 </root>

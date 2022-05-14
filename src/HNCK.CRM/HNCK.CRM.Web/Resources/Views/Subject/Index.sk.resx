@@ -124,7 +124,7 @@
     <value>Back</value>
   </data>
   <data name="CreateButton" xml:space="preserve">
-    <value>New subject</value>
+    <value>Pridať klienta</value>
   </data>
   <data name="CudzinciSplnomocnenie" xml:space="preserve">
     <value>Splnomocnenie</value>
@@ -133,13 +133,13 @@
     <value>Email</value>
   </data>
   <data name="ExportButton" xml:space="preserve">
-    <value>Export</value>
+    <value>Export do xlsx</value>
   </data>
   <data name="FirstNameColumn" xml:space="preserve">
-    <value>First name</value>
+    <value>Meno</value>
   </data>
   <data name="LastNameColumn" xml:space="preserve">
-    <value>Last name</value>
+    <value>Priezvisko</value>
   </data>
   <data name="MainSubInfoTitle" xml:space="preserve">
     <value>Main information</value>
@@ -148,9 +148,9 @@
     <value>Súhlas vlastníka nehnuteľností</value>
   </data>
   <data name="TelNumberColumn" xml:space="preserve">
-    <value>Tel. number</value>
+    <value>Tel. číslo</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Subject</value>
+    <value>Klienti</value>
   </data>
 </root>

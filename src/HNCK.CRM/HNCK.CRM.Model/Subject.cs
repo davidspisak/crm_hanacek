@@ -21,6 +21,9 @@ namespace HNCK.CRM.Model
         public string TelNumber { get; set; }
         public string PersonalIdentificationNumber { get; set; }
         public string BusinessIdentificationNumber { get; set; }
+        public string TravelDocument { get; set; }
+        public int? IdNationality { get; set; }
+        public virtual Country IdNationalityNavigation { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime? ResidenceCardValidTo { get; set; }
         public string Note { get; set; }

@@ -69,6 +69,25 @@
 					<input class="form-control" asp-for="CreateEventFromResidenceCardValidDate">
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-xl-3">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.TravelDocument"></label>
+				</div>
+				<div class="col-xl-3">
+					<input class="hnck-input form-control" asp-for="Subject.TravelDocument">
+				</div>
+
+				<div class="col-xl-3">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.IdNationality"></label>
+				</div>
+				<div class="col-xl-3">
+					<select class="hnck-input form-control" asp-for="Subject.IdNationality" asp-items="@Model.Countries">
+						<option>-- select --</option>
+					</select>
+				</div>
+			</div>
+
 		</div>
 
 

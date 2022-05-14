@@ -10,6 +10,7 @@ namespace HNCK.CRM.Model
         public Country()
         {
             Addresses = new HashSet<Address>();
+            Subjects = new HashSet<Subject>();
         }
 
         public int IdCountry { get; set; }
@@ -23,5 +24,7 @@ namespace HNCK.CRM.Model
         public bool? IsValid { get; set; }
 
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Subject> Subjects { get; set; }
+
     }
 }

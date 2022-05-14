@@ -16,12 +16,12 @@
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="#" id="GenerateDocument_01">@Localizer.GetString("SuhlasVlastnikaNehnutelnosti")</a>
 				<a class="dropdown-item" href="#" id="GenerateDocument_02">@Localizer.GetString("CudzinciSplnomocnenie")</a>
-				<a class="dropdown-item" href="#" id="GenerateDocument_03">@Localizer.GetString("VyhlasenieJedinehoSpolocnika")</a>
+				@*<a class="dropdown-item" href="#" id="GenerateDocument_03">@Localizer.GetString("VyhlasenieJedinehoSpolocnika")</a>
 				<a class="dropdown-item" href="#" id="GenerateDocument_04">@Localizer.GetString("SpravcaVkladu")</a>
 				<a class="dropdown-item" href="#" id="GenerateDocument_05">@Localizer.GetString("ZakladatelskaListina")</a>
 				<a class="dropdown-item" href="#" id="GenerateDocument_06">@Localizer.GetString("Splnomocnenie")</a>
 				<a class="dropdown-item" href="#" id="GenerateDocument_07">@Localizer.GetString("SplnomocnenieDanoviAutori")</a>
-				<a class="dropdown-item" href="#" id="GenerateDocument_08">@Localizer.GetString("VyhlasenieDoOr")</a>
+				<a class="dropdown-item" href="#" id="GenerateDocument_08">@Localizer.GetString("VyhlasenieDoOr")</a>*@
 			</div>
 		</div>
 		<a type="button" class="btn btn-primary float-right" asp-action="Create" asp-controller="Subject">@Localizer.GetString("CreateButton")</a>
@@ -75,7 +75,7 @@
 						.Scrollable(x => x.Height("Auto"))
 						.DataSource(dataSource => dataSource
 							.Ajax()
-							.PageSize(10)
+							.PageSize(20)
 							.Model(model => model.Id(p => p.IdSubject))
 						.Read("GetSubject_Read", "Subject")
 						)
