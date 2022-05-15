@@ -97,7 +97,8 @@ SELECT
     string_agg(concat(a."StreetName", ' ', a."StreetNumber", ', ', a."Zip", ' ',a."CityName", ', ', c."NameSK"), '; ') as "FullAddress",
     s."IdNationality",
     c2."NameSK" as "Nationality",
-    s."TravelDocument"
+    s."TravelDocument",
+	s."Owner"
 FROM 
 	sub."Subject" s
 left join 

@@ -74,8 +74,17 @@
 				</div>
 				<div class="col-xl-3">
 					<select class="hnck-input form-control" asp-for="Subject.IdNationality" asp-items="@Model.Countries">
-						<option>-- select --</option>
+						<option>-- @Localizer.GetString("select") --</option>
 					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xl-3">
+					<label class="hnck-text-white hnck-label" asp-for="Subject.Owner">@Localizer.GetString("Owner")</label>
+				</div>
+				<div class="col-xl-9">
+					<input class="hnck-input form-control" asp-for="Subject.Owner">
 				</div>
 			</div>
 
@@ -140,7 +149,7 @@
 				</div>
 				<div class="col-xl-10">
 					<select class="hnck-input form-control" asp-for="Subject.Address.IdCountry" asp-items="@Model.Countries">
-						<option>-- select --</option>
+						<option>-- @Localizer.GetString("select") --</option>
 					</select>
 				</div>
 			</div>

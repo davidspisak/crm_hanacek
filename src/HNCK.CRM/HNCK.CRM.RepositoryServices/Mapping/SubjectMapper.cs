@@ -40,7 +40,8 @@ namespace HNCK.CRM.Repository.Mapping
 				FullAddress = subject.FullAddress,
 				IdNationality = subject.IdNationality,
 				Nationality = subject.Nationality,
-				TravelDocument = subject.TravelDocument
+				TravelDocument = subject.TravelDocument,
+				Owner = subject.Owner
 			};
 
 			return subjectDto;
@@ -65,6 +66,7 @@ namespace HNCK.CRM.Repository.Mapping
 				IdNationality = subject.IdNationality,
 				Nationality = subject.Nationality,
 				TravelDocument = subject.TravelDocument,
+				Owner = subject.Owner,
 				Address = addr != null
 					? new AddressDto()
 					{
@@ -102,7 +104,8 @@ namespace HNCK.CRM.Repository.Mapping
 				Addresses = addresses,
 				UserEvents = EventMapper.Map(subjectDto.UserEvents).ToList(),
 				IdNationality = subjectDto.IdNationality,
-				TravelDocument = subjectDto.TravelDocument
+				TravelDocument = subjectDto.TravelDocument,
+				Owner = subjectDto.Owner
 			};
 
 			if (subjectDto.IdSubject.HasValue)

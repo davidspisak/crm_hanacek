@@ -147,6 +147,9 @@
   <data name="Nationality" xml:space="preserve">
     <value>Národnosť</value>
   </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Koho človek</value>
+  </data>
   <data name="PersonalIdentificationNumber" xml:space="preserve">
     <value>Rodné číslo</value>
   </data>

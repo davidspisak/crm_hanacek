@@ -123,6 +123,9 @@
   <data name="BackButton" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="BusinessIdentificationNumber" xml:space="preserve">
+    <value>IČO</value>
+  </data>
   <data name="CreateButton" xml:space="preserve">
     <value>Pridať klienta</value>
   </data>
@@ -143,6 +146,12 @@
   </data>
   <data name="MainSubInfoTitle" xml:space="preserve">
     <value>Main information</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Koho človek</value>
+  </data>
+  <data name="PersonalIdentificationNumber" xml:space="preserve">
+    <value>Rodné číslo</value>
   </data>
   <data name="SuhlasVlastnikaNehnutelnosti" xml:space="preserve">
     <value>Súhlas vlastníka nehnuteľností</value>

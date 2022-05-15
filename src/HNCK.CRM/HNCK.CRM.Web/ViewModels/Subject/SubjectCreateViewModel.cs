@@ -22,7 +22,7 @@ namespace HNCK.CRM.Web.ViewModels.Subject
 		public SubjectCreateViewModel(IRepositoryServices repositoryServices)
 		{
 			Countries = repositoryServices.GetCountries()
-				.Select(n => new SelectListItem() { Value = n.IdCountry.ToString(), Text = n.NameENShort.ToString() })
+				.Select(n => new SelectListItem() { Value = n.IdCountry.ToString(), Text = n.NameSK.ToString() })
 				.ToList();
 		}
 

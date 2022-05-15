@@ -19,5 +19,6 @@ namespace HNCK.CRM.QueryModel
 		public string TravelDocument { get; set; }
 		public int? IdNationality { get; set; }
 		public string Nationality { get; set; }
+		public string Owner { get; set; }
 	}
 }

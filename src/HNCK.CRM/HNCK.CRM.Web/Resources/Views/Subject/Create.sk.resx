@@ -135,6 +135,12 @@
   <data name="ContactTitle" xml:space="preserve">
     <value>Kontaktné údaje</value>
   </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Uložiť</value>
+  </data>
+  <data name="CreateEventFromResidenceCardValidDate" xml:space="preserve">
+    <value>Vytvoriť udalosť pre koniec platnosti kartičky</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -153,6 +159,9 @@
   <data name="MainSubInfoTitle" xml:space="preserve">
     <value>Základné údaje</value>
   </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>Národnosť</value>
+  </data>
   <data name="Note" xml:space="preserve">
     <value>Poznámka</value>
   </data>
@@ -166,7 +175,7 @@
     <value>Platnosť kartičky</value>
   </data>
   <data name="select" xml:space="preserve">
-    <value>Vyberte</value>
+    <value>vyberte</value>
   </data>
   <data name="StreetName" xml:space="preserve">
     <value>Ulica</value>
@@ -178,13 +187,10 @@
     <value>Tel. číslo</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Zmena klienta</value>
+    <value>Nový klient</value>
   </data>
   <data name="TravelDocument" xml:space="preserve">
     <value>Číslo pasu</value>
-  </data>
-  <data name="UpdateButton" xml:space="preserve">
-    <value>Uložiť</value>
   </data>
   <data name="Zip" xml:space="preserve">
     <value>PSČ</value>

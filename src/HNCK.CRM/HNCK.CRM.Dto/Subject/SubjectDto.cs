@@ -26,5 +26,6 @@ namespace HNCK.CRM.Dto.Subject
 		public int? IdNationality { get; set; }
 		public string Nationality { get; set; }
 		public string TravelDocument { get; set; }
+		public string Owner { get; set; }
 	}
 }

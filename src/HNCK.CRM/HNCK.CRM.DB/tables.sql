@@ -149,7 +149,8 @@ CREATE TABLE sub."Subject"
 	"Note" text NULL,
 	"ValidTo" timestamp without time zone NULL,
 	"IdNationality" integer NULL,
-	"TravelDocument" varchar(32) NULL
+	"TravelDocument" varchar(127) NULL,
+	"Owner" varchar(511) NULL
 )
 ;
 

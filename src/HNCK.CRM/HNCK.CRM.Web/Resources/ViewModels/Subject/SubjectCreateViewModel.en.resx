@@ -141,6 +141,9 @@
   <data name="Note" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Koho človek</value>
+  </data>
   <data name="PersonalIdentificationNumber" xml:space="preserve">
     <value>Personal identification number</value>
   </data>
